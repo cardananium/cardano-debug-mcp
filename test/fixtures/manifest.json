@@ -1,0 +1,1130 @@
+{
+  "_files": [
+    "datum-lock.tx",
+    "lock-spend.provider-rows.json",
+    "lock-spend.tx",
+    "multi-redeemer.tx",
+    "onchain__synthetic_s06/epoch_params/mainnet/koios/575.json",
+    "onchain__synthetic_s06/rows/mainnet/koios/account_info/stake179xtnkaga34lwedqh4zrvck7v65mwjs86e54je6pn76qhdgjzacnv.json",
+    "onchain__synthetic_s06/rows/mainnet/koios/committee_info/current.json",
+    "onchain__synthetic_s06/rows/mainnet/koios/constitution/current.json",
+    "onchain__synthetic_s06/rows/mainnet/koios/totals/575.json",
+    "onchain__synthetic_s06/tx/mainnet/koios/f60fd52e20048eac62d0e1c22add5897aba1a21b96bbe46c5b355758965de49b.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/0fac252130bcaccf9ed85c51db04fbad3ab931e88877f93d8a937d059f2baef4_4.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/5a6f90d2a750c52f75c3b86d273e32cd14cac45987f389eacbbd653e96232398_2.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/5b8a4a57fe4eebc0b003ce89ab6a1381c1884b0e1df284ed8bab007ebd9df688_0.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/6fbccb95f0192aca0a55bbdd60c90dad68d3fd1d3ea770d30d347316b68bb9d7_0.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/992e34f9f2a7b1e64610bc198a9d0c6daad4f2731ba2d5e8657647cf7387fa9b_1.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/b21df38019e30db250f94e8970c33e9c54a916bb4ac57b0f3e3bed4db7dcc38b_0.json",
+    "onchain__synthetic_s06/utxo/mainnet/koios/cb2acdcf5cd8a5399adbcd69fba542bf917c8f86c64c50f118b25a27fd31266f_3.json",
+    "payment.bundle.json",
+    "payment.debugger-context.json",
+    "payment.tx",
+    "pool-mint.tx",
+    "s01-hub.debugger-context.json",
+    "s01-hub.eval.json",
+    "s01-hub.spend-script.v2.hex",
+    "s02-loop.debugger-context.json",
+    "s03-native-target.debugger-context.json",
+    "s04.propose.bundle.json",
+    "s05.spo-vote.bundle.json",
+    "vote-tx.tx",
+    "wide-mint.tx"
+  ],
+  "payment.assetNameHex": "53594e544845544943",
+  "payment.changeCoin": "118664461",
+  "payment.fee": "176149",
+  "payment.inputs": [
+    {
+      "index": 0,
+      "txHash": "6e7ce1f0f3ba212d7556c62583ae09b84917d57be0d4737d5df9821bc825c87b"
+    }
+  ],
+  "payment.metadataLabel": 674,
+  "payment.network": "mainnet",
+  "payment.policyId": "938da0bead6fa8404a76a59e65bf48a114fe43dd9e5d8c6620cec733",
+  "payment.recipientAddress": "addr1q8gz9hnqz6665mll5z4mcnk92xplm2u5ylthu0nahc5ja2ku0dw8vk6hypd4sdwskuvdrcverl4zz2z4wy0frtug0umqwl7as3",
+  "payment.recipientCoin": "1159390",
+  "payment.senderAddress": "addr1qy3rljxxazdkmrt7t08yrnpgu88tvc5r9a6pa38zfarvreumahyflyt43yx090p6k8d4s8q0ejnj6rdc933qk7dcqegs720rnq",
+  "payment.signerKeyHash": "223fc8c6e89b6d8d7e5bce41cc28e1ceb662832f741ec4e24f46c1e7",
+  "payment.size": 473,
+  "payment.slot": "150000000",
+  "payment.ttl": "150007200",
+  "payment.txHash": "80288694627abed279a3882ae808d88a920dbdd6c560aa9a7f609957c2556010",
+  "payment.txId": "tx_mainnet_80288694627a",
+  "payment.utxos": [
+    "6e7ce1f0f3ba212d7556c62583ae09b84917d57be0d4737d5df9821bc825c87b#0",
+    "acabf67c95fdbe50f8d7e2e36900da760478d69729276a46a6948e41f05c90ef#3"
+  ],
+  "payment.vkeyCount": 1,
+  "s01.collateralTotal": "400541",
+  "s01.contextFile": "s01-hub.debugger-context.json",
+  "s01.counts": {
+    "collateral": 1,
+    "inputs": 3,
+    "mintPolicies": 2,
+    "outputs": 3,
+    "redeemers": 2,
+    "referenceInputs": 3,
+    "utxos": 5,
+    "vkeyWitnesses": 4
+  },
+  "s01.datum": {
+    "hash": "fd4356a74605ca6e991a9e48e54d635e4b644ed96eef572cae7fa0e8d53bcb26",
+    "inputHex": "d8799fd8799fd8799f581c5ad288a30450aaabb750dac45fb3a3477ff9b01f5ad50f4b0f7ec8e6ffd87a80ff581c508861fccaf6c82a37a9af151086e241b4d6540fc6f0da18063c0e35401a0ee6b280011b000001ba60d338005473796e746865746963206f726465722030303031ff",
+    "outputHex": "d8799fd8799fd8799f581c5ad288a30450aaabb750dac45fb3a3477ff9b01f5ad50f4b0f7ec8e6ffd87a80ff581c508861fccaf6c82a37a9af151086e241b4d6540fc6f0da18063c0e35401a0e4e1c00011b000001ba60d33800581e73796e746865746963206f7264657220303030312c2072656c6973746564ff"
+  },
+  "s01.debug": {
+    "by": "de-uplc engine (wasm, in-process) over the bytes cquisitor-lib's validate_transaction_js applied: src/engine/parts.ts partsFromEval + src/engine/session-core.ts",
+    "measured": true,
+    "mint": {
+      "budgetStopCpu": "9200000",
+      "cpuDeclared": "23463550",
+      "cpuPct": 87.71,
+      "cpuSpent": "20582061",
+      "envAtLine12": {
+        "items": [
+          {
+            "binderUplcLine": 6,
+            "debruijn": 3,
+            "name": "i",
+            "summary": "builtin tailList (0/1 args, 1 forces)",
+            "type": "Builtin"
+          },
+          {
+            "binderUplcLine": 8,
+            "debruijn": 2,
+            "name": "i",
+            "summary": "builtin headList (0/1 args, 1 forces)",
+            "type": "Builtin"
+          },
+          {
+            "binderUplcLine": 10,
+            "debruijn": 1,
+            "name": "i",
+            "summary": "builtin mkCons (0/2 args, 1 forces)",
+            "type": "Builtin"
+          }
+        ],
+        "line": 12,
+        "total": 3
+      },
+      "language": "V2",
+      "longestUplcLine": 5943,
+      "memDeclared": "71753",
+      "memPct": 100,
+      "memSpent": "71753",
+      "profile": {
+        "by": "self_cpu",
+        "cpu": "20582061",
+        "hotLines": 5,
+        "hotTerms": [
+          {
+            "excerpt": "[ [ [ i i ] (delay i ) ] (delay [ (lam i [ [ i [ (builtin listData) [ [ i [ (builtin bData) i ] ] [ …",
+            "hits": "12",
+            "kind": "Apply",
+            "pct": 2.89,
+            "selfCpu": "595976",
+            "termId": 400,
+            "uplcLine": 633
+          },
+          {
+            "excerpt": "[ [ [ i i ] (delay (con (list data) []) ) ] (delay [ (lam i [ [ [ (lam i (lam i (lam i [ (lam i [ [ …",
+            "hits": "9",
+            "kind": "Apply",
+            "pct": 2.17,
+            "selfCpu": "446982",
+            "termId": 434,
+            "uplcLine": 601
+          },
+          {
+            "excerpt": "[ [ [ i i ] (delay (con (list data) []) ) ] (delay [ (lam i [ (lam i (force [ [ [ i [ [ (builtin equ…",
+            "hits": "9",
+            "kind": "Apply",
+            "pct": 2.17,
+            "selfCpu": "446982",
+            "termId": 492,
+            "uplcLine": 751
+          },
+          {
+            "excerpt": "[ i i ]",
+            "hits": "6",
+            "kind": "Apply",
+            "pct": 1.53,
+            "selfCpu": "315984",
+            "termId": 378,
+            "uplcLine": 670
+          },
+          {
+            "excerpt": "[ i i ]",
+            "hits": "6",
+            "kind": "Apply",
+            "pct": 1.53,
+            "selfCpu": "315984",
+            "termId": 417,
+            "uplcLine": 717
+          }
+        ],
+        "stepsTotal": "1263",
+        "termsExecuted": 511,
+        "top": 5
+      },
+      "ref": "mint:1",
+      "scriptContextVersion": "V1V2",
+      "scriptHash": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+      "stepsTotal": 1264,
+      "termCount": 749,
+      "traceCount": 0,
+      "uplcLines": 1199,
+      "windowDedent": 64
+    },
+    "spend": {
+      "budgetStopCpu": "9500000",
+      "cpuDeclared": "24144698",
+      "cpuPct": 87.71,
+      "cpuSpent": "21179559",
+      "envAtLine12": {
+        "items": [
+          {
+            "binderUplcLine": 5,
+            "debruijn": 4,
+            "name": "i",
+            "summary": "builtin tailList (0/1 args, 1 forces)",
+            "type": "Builtin"
+          },
+          {
+            "binderUplcLine": 7,
+            "debruijn": 3,
+            "name": "i",
+            "summary": "builtin headList (0/1 args, 1 forces)",
+            "type": "Builtin"
+          },
+          {
+            "binderUplcLine": 9,
+            "debruijn": 2,
+            "name": "i",
+            "summary": "builtin mkCons (0/2 args, 1 forces)",
+            "type": "Builtin"
+          },
+          {
+            "binderUplcLine": 11,
+            "debruijn": 1,
+            "name": "i",
+            "summary": "builtin chooseList (0/3 args, 2 forces)",
+            "type": "Builtin"
+          }
+        ],
+        "line": 12,
+        "total": 4
+      },
+      "language": "V2",
+      "longestUplcLine": 5978,
+      "memDeclared": "71208",
+      "memPct": 100,
+      "memSpent": "71208",
+      "profile": {
+        "by": "self_cpu",
+        "cpu": "21179559",
+        "hotLines": 5,
+        "hotTerms": [
+          {
+            "excerpt": "[ [ [ i i ] (delay (con bool False) ) ] (delay [ (lam i (force [ [ [ i [ [ (builtin equalsByteString…",
+            "hits": "9",
+            "kind": "Apply",
+            "pct": 2.11,
+            "selfCpu": "446982",
+            "termId": 1629,
+            "uplcLine": 2559
+          },
+          {
+            "excerpt": "[ i i ]",
+            "hits": "12",
+            "kind": "Apply",
+            "pct": 1.87,
+            "selfCpu": "396600",
+            "termId": 1648,
+            "uplcLine": 2634
+          },
+          {
+            "excerpt": "[ i [ (builtin unConstrData) i ] ]",
+            "hits": "6",
+            "kind": "Apply",
+            "pct": 1.49,
+            "selfCpu": "315984",
+            "termId": 1582,
+            "uplcLine": 2537
+          },
+          {
+            "excerpt": "[ i [ i [ i [ i [ i [ i [ i [ i [ i [ i [ (builtin unConstrData) i ] ] ] ] ] ] ] ] ] ] ]",
+            "hits": "6",
+            "kind": "Apply",
+            "pct": 0.93,
+            "selfCpu": "198300",
+            "termId": 1591,
+            "uplcLine": 2519
+          },
+          {
+            "excerpt": "[ i i ]",
+            "hits": "6",
+            "kind": "Apply",
+            "pct": 0.93,
+            "selfCpu": "198300",
+            "termId": 1606,
+            "uplcLine": 2582
+          }
+        ],
+        "stepsTotal": "1245",
+        "termsExecuted": 594,
+        "top": 5
+      },
+      "ref": "spend:2",
+      "scriptContextVersion": "V1V2",
+      "scriptHash": "830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+      "stepsTotal": 1246,
+      "termCount": 2571,
+      "traceCount": 0,
+      "uplcLines": 4076,
+      "windowDedent": 72
+    }
+  },
+  "s01.diagnostics": {
+    "errors": [
+      "FeeTooSmallUTxO",
+      "ScriptDataHashMismatch",
+      "ReferenceInputOverlapsWithInput"
+    ],
+    "phase2Warnings": [
+      "BudgetIsBiggerThanExpected",
+      "BudgetIsBiggerThanExpected"
+    ],
+    "total": 5,
+    "uiAnnotations": 10,
+    "verdict": "phase1_failed",
+    "warnings": []
+  },
+  "s01.evalFile": "s01-hub.eval.json",
+  "s01.fee": "267027",
+  "s01.feeDecomposition": {
+    "executionUnitsFee": 11682,
+    "referenceScriptsFee": 50340,
+    "txSizeFee": 230005
+  },
+  "s01.fundingCoin": "312500000",
+  "s01.fundingIndex": 2,
+  "s01.fundingRef": "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#2",
+  "s01.fundingTxId": "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9",
+  "s01.fundingTxPrefix": "6f5079ca",
+  "s01.keys": {
+    "makerKeyHash": "5ad288a30450aaabb750dac45fb3a3477ff9b01f5ad50f4b0f7ec8e6",
+    "nativeSigners": 3,
+    "operatorKeyHash": "22aaefe63392548892f4c9e52f197f25f531905d252eec3553484e67",
+    "walletAddress": "addr1qy324mlxxwf9fzyj7ny72tce0ujl2vvst5jjamp42dyyuec5amuyrl8hp4j5ls2lfnwkxfeswkcfj6e39kzrrj57d8xs746fp9"
+  },
+  "s01.minFee": "292027",
+  "s01.mint": {
+    "assetNameHex": "4f424f4c",
+    "burned": "15000000000000",
+    "exUnits": {
+      "calculated": {
+        "mem": "71753",
+        "steps": "20582061"
+      },
+      "declared": {
+        "mem": "71753",
+        "steps": "23463550"
+      },
+      "deltaSteps": "-2881489"
+    },
+    "index": 1,
+    "policy": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+    "redeemerHex": "d87a80",
+    "ref": "mint:1",
+    "scriptHash": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+    "target": "policy c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00"
+  },
+  "s01.mintScript": {
+    "hash": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+    "header": "5902cd",
+    "holder": {
+      "address": "addr1wys864mutnefd0j2x4awgzdwkcydvm7hspjfkq40ukmtqcgjj933f",
+      "assetUnits": 0,
+      "coin": "4910300",
+      "index": 3,
+      "prefix": "7efb1f5f",
+      "ref": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#3",
+      "txHash": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813"
+    },
+    "name": "burn_mint",
+    "prefix": "5902cd01",
+    "registry": {
+      "debuggerListingLines": 1193,
+      "firstNote": "Applied compile-time params (from outer Apply chain) — applied first (innermost):",
+      "handlerLine": "mint(redeemer, script_context) {",
+      "pseudocodeLines": 109,
+      "pseudocodeMaxIndent": 14,
+      "termCount": 745,
+      "uplcLines": 649
+    },
+    "size": 720,
+    "version": "V2"
+  },
+  "s01.nativeMint": {
+    "index": 0,
+    "policy": "30a00f0be2be8ddefc8682713398d69c9da069c8451eebe58218b63f",
+    "quantity": -1,
+    "ref": "mint:0"
+  },
+  "s01.nativeScript": {
+    "hash": "30a00f0be2be8ddefc8682713398d69c9da069c8451eebe58218b63f",
+    "holder": {
+      "address": "addr1wxps79lx9j9pzt9mt97aazdfugudqgvke8gzevsrer4tuhcmlnk2y",
+      "assetUnits": 3,
+      "coin": "2787820",
+      "index": 0,
+      "prefix": "e8cc15f9",
+      "ref": "e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221#0",
+      "txHash": "e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221"
+    },
+    "name": "multisig_3_of_6",
+    "requiredSigners": 3,
+    "size": 196
+  },
+  "s01.network": "mainnet",
+  "s01.out0": {
+    "address": "addr1wxps79lx9j9pzt9mt97aazdfugudqgvke8gzevsrer4tuhcmlnk2y",
+    "addressCborHex": "581d71830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+    "addressCborPrefix": "581d71",
+    "addressHex": "71830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+    "datumHex": "d8799fd8799fd8799f581c5ad288a30450aaabb750dac45fb3a3477ff9b01f5ad50f4b0f7ec8e6ffd87a80ff581c508861fccaf6c82a37a9af151086e241b4d6540fc6f0da18063c0e35401a0e4e1c00011b000001ba60d33800581e73796e746865746963206f7264657220303030312c2072656c6973746564ff",
+    "scriptRefHash": "30a00f0be2be8ddefc8682713398d69c9da069c8451eebe58218b63f"
+  },
+  "s01.protocolMajor": 10,
+  "s01.redeemers": [
+    "spend:2",
+    "mint:1"
+  ],
+  "s01.scriptDataHash": {
+    "expected": "3fcd8f23f82c6f1d582b86722a62425129eb027550d564069d6ad205ac1fd6c9",
+    "provided": "4716f952e5cea99030cb481944aedeb6a6f74db9c04299bc14c842798dda2f3b",
+    "staleBecause": "computed with a PlutusV2 cost model whose first parameter is one lower (the previous revision of the model)"
+  },
+  "s01.size": 1697,
+  "s01.spend": {
+    "datumHex": "d8799fd8799fd8799f581c5ad288a30450aaabb750dac45fb3a3477ff9b01f5ad50f4b0f7ec8e6ffd87a80ff581c508861fccaf6c82a37a9af151086e241b4d6540fc6f0da18063c0e35401a0ee6b280011b000001ba60d338005473796e746865746963206f726465722030303031ff",
+    "exUnits": {
+      "calculated": {
+        "mem": "71208",
+        "steps": "21179559"
+      },
+      "declared": {
+        "mem": "71208",
+        "steps": "24144698"
+      },
+      "deltaSteps": "-2965139"
+    },
+    "index": 2,
+    "redeemerHex": "d87980",
+    "ref": "spend:2",
+    "scriptHash": "830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+    "target": "input e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221#0"
+  },
+  "s01.spendScript": {
+    "address": "addr1wxps79lx9j9pzt9mt97aazdfugudqgvke8gzevsrer4tuhcmlnk2y",
+    "addressHex": "71830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+    "file": "s01-hub.spend-script.v2.hex",
+    "hash": "830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+    "hashV1": "2a8149dffa44aa610435ab904b8cd4d1c28ae4d0f618451a4d84ba9d",
+    "hashV3": "d5dd7f826d203cd6450a5bc1eba710ecf811230c0b852a59f263b568",
+    "header": "590985",
+    "holder": {
+      "address": "addr1wys864mutnefd0j2x4awgzdwkcydvm7hspjfkq40ukmtqcgjj933f",
+      "assetUnits": 0,
+      "coin": "12625500",
+      "index": 1,
+      "prefix": "7efb1f5f",
+      "ref": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#1",
+      "txHash": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813"
+    },
+    "name": "order_fixed",
+    "prefix": "59098501",
+    "registry": {
+      "debuggerListingLines": 4067,
+      "firstNote": "Outer Apply chain — no compile-time params: all 1 argument(s) are",
+      "handlerLine": "spend(datum, redeemer, script_context) {",
+      "pseudocodeLines": 319,
+      "pseudocodeMaxIndent": 22,
+      "termCount": 2565,
+      "uplcLines": 2302
+    },
+    "size": 2440,
+    "version": "V2"
+  },
+  "s01.spendScriptFile": "s01-hub.spend-script.v2.hex",
+  "s01.tokens": {
+    "burnAssetNameHex": "4f424f4c",
+    "burnHeld": "15015000994000",
+    "burnPolicy": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+    "burnQuantity": "15000000000000",
+    "nativePolicy": "30a00f0be2be8ddefc8682713398d69c9da069c8451eebe58218b63f",
+    "soldPolicy": "508861fccaf6c82a37a9af151086e241b4d6540fc6f0da18063c0e35"
+  },
+  "s01.txHash": "8c7c51d7a08d0633fca3eecc650ec073297f684ffdcb6825a9a54d498ce36cf6",
+  "s01.txId": "tx_mainnet_8c7c51d7a08d",
+  "s01.txSizeFee": "230005",
+  "s01.utxo": {
+    "funding": {
+      "address": "addr1qy324mlxxwf9fzyj7ny72tce0ujl2vvst5jjamp42dyyuec5amuyrl8hp4j5ls2lfnwkxfeswkcfj6e39kzrrj57d8xs746fp9",
+      "assetUnits": 0,
+      "coin": "312500000",
+      "index": 2,
+      "prefix": "6f5079ca",
+      "ref": "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#2",
+      "txHash": "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9"
+    },
+    "holderBurn": {
+      "address": "addr1wys864mutnefd0j2x4awgzdwkcydvm7hspjfkq40ukmtqcgjj933f",
+      "assetUnits": 0,
+      "coin": "4910300",
+      "index": 3,
+      "prefix": "7efb1f5f",
+      "ref": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#3",
+      "txHash": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813"
+    },
+    "holderOrder": {
+      "address": "addr1wys864mutnefd0j2x4awgzdwkcydvm7hspjfkq40ukmtqcgjj933f",
+      "assetUnits": 0,
+      "coin": "12625500",
+      "index": 1,
+      "prefix": "7efb1f5f",
+      "ref": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#1",
+      "txHash": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813"
+    },
+    "scriptInput": {
+      "address": "addr1wxps79lx9j9pzt9mt97aazdfugudqgvke8gzevsrer4tuhcmlnk2y",
+      "assetUnits": 3,
+      "coin": "2787820",
+      "datumHash": "fd4356a74605ca6e991a9e48e54d635e4b644ed96eef572cae7fa0e8d53bcb26",
+      "index": 0,
+      "inlineDatumHex": "d8799fd8799fd8799f581c5ad288a30450aaabb750dac45fb3a3477ff9b01f5ad50f4b0f7ec8e6ffd87a80ff581c508861fccaf6c82a37a9af151086e241b4d6540fc6f0da18063c0e35401a0ee6b280011b000001ba60d338005473796e746865746963206f726465722030303031ff",
+      "prefix": "e8cc15f9",
+      "ref": "e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221#0",
+      "tokens": 3,
+      "txHash": "e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221"
+    },
+    "walletInput": {
+      "address": "addr1qy324mlxxwf9fzyj7ny72tce0ujl2vvst5jjamp42dyyuec5amuyrl8hp4j5ls2lfnwkxfeswkcfj6e39kzrrj57d8xs746fp9",
+      "assetUnits": 4,
+      "coin": "3250000",
+      "index": 1,
+      "prefix": "6f5079ca",
+      "ref": "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#1",
+      "txHash": "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9"
+    }
+  },
+  "s01.utxos": [
+    "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#1",
+    "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#3",
+    "e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221#0",
+    "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#1",
+    "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#2"
+  ],
+  "s02.contextFile": "s02-loop.debugger-context.json",
+  "s02.evalTimeoutMs": 2000,
+  "s02.loopAddress": "addr1w8nr6mxnp895s3wj8rhy4656ft4zvqtk84qy2mtj342m7ngg9fl3a",
+  "s02.loopHash": "e63d6cd309cb4845d238ee4aea9a4aea2601763d40456d728d55bf4d",
+  "s02.loopHex": "4d01000023230010012300100101",
+  "s02.loopHolder": "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#1",
+  "s02.loopSize": 14,
+  "s02.network": "mainnet",
+  "s02.redeemers": [
+    "spend:2",
+    "mint:1"
+  ],
+  "s02.spendIndex": 2,
+  "s02.txHash": "8c7c51d7a08d0633fca3eecc650ec073297f684ffdcb6825a9a54d498ce36cf6",
+  "s02.txId": "tx_mainnet_8c7c51d7a08d",
+  "s02.utxos": [
+    "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#1",
+    "7efb1f5ff3be0deeeb6947e8e682996ffa4ffba4cbdcda5e335099df362f9813#3",
+    "e8cc15f9714db314f10f0b1a3682a2893250e4c3d6f727212d0aa1fdcf005221#0",
+    "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#1",
+    "6f5079caff3e15ed2ebf81325bd9870be22e28108c68730c855cb448384447f9#2"
+  ],
+  "s03.contextFile": "s03-native-target.debugger-context.json",
+  "s03.fee": "263739",
+  "s03.guardedAddress": "addr1w82yzgn42ws0r2t9lmnavzs0wf9ndrw3hhduyzrnplxwhncxvfgxz",
+  "s03.guardedInput": "e6b5b3c221088fbece02205d971a433d102dd547394d20d881ba950d58124cb2#0",
+  "s03.nativeScriptHash": "d441227553a0f1a965fee7d60a0f724b368dd1bddbc208730fccebcf",
+  "s03.network": "mainnet",
+  "s03.phase1Errors": [],
+  "s03.phase2Errors": [
+    "MissingRequiredScript"
+  ],
+  "s03.redeemerRef": "spend:0",
+  "s03.size": 333,
+  "s03.txHash": "8711ccaef4de5366a4aba9755cf1cbbc0cb4858634895c413b76d5054d989225",
+  "s03.txId": "tx_mainnet_8711ccaef4de",
+  "s03.utxos": [
+    "e6b5b3c221088fbece02205d971a433d102dd547394d20d881ba950d58124cb2#0",
+    "23621769cc706681a3399514a4233a8e7e49205bd35e4894d764bd651651550d#0",
+    "23621769cc706681a3399514a4233a8e7e49205bd35e4894d764bd651651550d#1"
+  ],
+  "s04.activeActionTxHash": "bcb36af9f6136b2da46873baf1363f0996f25250d5f83d9721f9ef1d6c601ee7",
+  "s04.blockHeight": 8006000,
+  "s04.bundleFile": "s04.propose.bundle.json",
+  "s04.defaultsApplied": [
+    "slot=160120000: the transaction is on chain (epoch 568, block 8006000), so it is validated at its inclusion slot, not at the current tip",
+    "protocolParameters = epoch 568 parameters (the inclusion epoch), not the current ones",
+    "utxoSet[*].isSpent=false: the 2 inputs / collateral / reference inputs were unspent when the tx was included (the provider reports 2 of them spent now)",
+    "treasuryValue = the provider's treasury total for epoch 568",
+    "reward accounts (balances, registration, delegation), governance actions, constitution: the provider's CURRENT state, not the state at slot 160120000 (no historical view exists); withdrawal amounts, registrations and deposits may be judged against today's values"
+  ],
+  "s04.deposit": "100000000000",
+  "s04.epoch": 568,
+  "s04.exUnits": {
+    "mem": "317333",
+    "steps": "91751734"
+  },
+  "s04.fee": "295631",
+  "s04.guardrailsHash": "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf",
+  "s04.guardrailsSize": 1964,
+  "s04.inputs": [
+    "f290b5dd6bef64a908c8c42ad479e2d998a1eb5a8728f1daf22d27a3de97abda#0",
+    "f03e6e4762f176f45b9c02f32ecb9249fbc85ef79df71c0a9b3409600c10fb3c#1"
+  ],
+  "s04.lastEnactedActionTxHash": "7a4eaa732dd84ca09dacbfa0672e16c0865cb90191e58a308efdf0651c1643a6",
+  "s04.network": "mainnet",
+  "s04.plutusVersion": "V3",
+  "s04.proposalPolicyHash": "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf",
+  "s04.protocolMajor": 10,
+  "s04.redeemer": {
+    "exUnits": {
+      "mem": "317333",
+      "steps": "91751734"
+    },
+    "index": 0,
+    "plutusVersion": "V3",
+    "purpose": "propose",
+    "ref": "propose:0",
+    "scriptHash": "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf",
+    "target": "proposal #0",
+    "verdict": "exact",
+    "witnessIndex": 0
+  },
+  "s04.returnAccount": "stake1u9l27cktfae4thrrp6yssvkqzsqqd66lxzj5eyu3r2rgwpgtrj9t9",
+  "s04.signerKeyHash": "e2b3baf0ed872601db55070f90db60696a3c4a0e5fe00a128a410365",
+  "s04.size": 2622,
+  "s04.slot": "160120000",
+  "s04.treasury": "1500000000000000",
+  "s04.txHash": "b86fee6f05b1b9db03965c241dd71a040c5b72e715819a264c7d062605438623",
+  "s04.txId": "tx_mainnet_b86fee6f05b1",
+  "s05.bundleFile": "s05.spo-vote.bundle.json",
+  "s05.epoch": 637,
+  "s05.errorsWithNames": [
+    "WrongRequestedWithdrawalAmount",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO"
+  ],
+  "s05.fee": "199117",
+  "s05.govActionId": "gov_action1u0x9hm5dpsxtlza4y0ckd97tqm7hd2hkzpcp5xpcf0z40nqqvgeqq0jnw4c",
+  "s05.govActionIndex": 0,
+  "s05.govActionTxHash": "e3cc5bee8d0c0cbf8bb523f16697cb06fd76aaf610701a18384bc557cc006232",
+  "s05.guardrailsHash": "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf",
+  "s05.inputCount": 11,
+  "s05.network": "mainnet",
+  "s05.otherParameters": [
+    "min_pool_cost",
+    "drep_deposit"
+  ],
+  "s05.outputCount": 1,
+  "s05.protocolMajor": 11,
+  "s05.securityParameters": [
+    "max_block_ex_mem",
+    "max_block_ex_steps",
+    "max_tx_ex_mem",
+    "max_tx_ex_steps"
+  ],
+  "s05.size": 995,
+  "s05.slot": "190080000",
+  "s05.storedErrorCount": 13,
+  "s05.storedErrors": [
+    "WrongRequestedWithdrawalAmount",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "BadInputsUTxO",
+    "DisallowedVoters"
+  ],
+  "s05.treasury": "1380000000000000",
+  "s05.txHash": "c5fce8035b49a1558116daee439ecec03e05e7ad323575d6db14be29cbb25b59",
+  "s05.txId": "tx_mainnet_c5fce8035b49",
+  "s05.vkeyCount": 3,
+  "s05.vote": "Yes",
+  "s05.voterPoolHash": "013a59b2709f35c505f08cadfb8aed730ce7d8ad8c7503b30ab5e02b",
+  "s05.voterPoolId": "pool1qya9nvnsnu6u2p0s3jklhzhdwvxw0k9d336s8vc2khszkp9nuyp",
+  "s05.withdrawal": {
+    "account": "stake1u8mqg6l6649v98q5vhevtya73kzfrhtcw35r37fly0sknygcx20cy",
+    "expected": 4200000000,
+    "requested": "9300000000"
+  },
+  "s06.blockHash": "43b5e1ff09ed9f63538000c46a78b5e554910830dff9c1e862e25ae98bbd656d",
+  "s06.blockHeight": 8172500,
+  "s06.cacheDir": "onchain__synthetic_s06",
+  "s06.cacheFileCount": 13,
+  "s06.cachedEpochParamsFile": "epoch_params/mainnet/koios/575.json",
+  "s06.collateral": {
+    "input": "0fac252130bcaccf9ed85c51db04fbad3ab931e88877f93d8a937d059f2baef4#4",
+    "total": "5000000"
+  },
+  "s06.epoch": 575,
+  "s06.exUnits": {
+    "spend:1": {
+      "mem": "1484",
+      "steps": "226829"
+    },
+    "spend:2": {
+      "mem": "42179",
+      "steps": "16860396"
+    },
+    "withdraw:0": {
+      "mem": "17285",
+      "steps": "7023869"
+    }
+  },
+  "s06.fee": "229822",
+  "s06.inputs": [
+    "cb2acdcf5cd8a5399adbcd69fba542bf917c8f86c64c50f118b25a27fd31266f#3",
+    "0fac252130bcaccf9ed85c51db04fbad3ab931e88877f93d8a937d059f2baef4#4",
+    "6fbccb95f0192aca0a55bbdd60c90dad68d3fd1d3ea770d30d347316b68bb9d7#0"
+  ],
+  "s06.network": "mainnet",
+  "s06.protocolMajor": 10,
+  "s06.redeemerRefs": [
+    "spend:1",
+    "spend:2",
+    "withdraw:0"
+  ],
+  "s06.referenceInputs": [
+    "5b8a4a57fe4eebc0b003ce89ab6a1381c1884b0e1df284ed8bab007ebd9df688#0",
+    "b21df38019e30db250f94e8970c33e9c54a916bb4ac57b0f3e3bed4db7dcc38b#0",
+    "992e34f9f2a7b1e64610bc198a9d0c6daad4f2731ba2d5e8657647cf7387fa9b#1",
+    "5a6f90d2a750c52f75c3b86d273e32cd14cac45987f389eacbbd653e96232398#2"
+  ],
+  "s06.rewardAccount": "stake179xtnkaga34lwedqh4zrvck7v65mwjs86e54je6pn76qhdgjzacnv",
+  "s06.scripts": {
+    "reward": {
+      "hash": "4cb9dba8ec6bf765a0bd443662de66a9b74a07d6695967419fb40bb5",
+      "plutusVersion": "V2",
+      "referenceInput": "5a6f90d2a750c52f75c3b86d273e32cd14cac45987f389eacbbd653e96232398#2",
+      "size": 174
+    },
+    "spend": {
+      "hash": "c7a9aec9ef09ac24378709edba99eea93072c61aa2ae27c4ed82bac3",
+      "plutusVersion": "V2",
+      "referenceInput": "b21df38019e30db250f94e8970c33e9c54a916bb4ac57b0f3e3bed4db7dcc38b#0",
+      "size": 1098
+    },
+    "spend2": {
+      "hash": "f5503c65268747e4e37b10760913ee83d5f5eb18690d8c12e3dbd2df",
+      "plutusVersion": "V2",
+      "referenceInput": "992e34f9f2a7b1e64610bc198a9d0c6daad4f2731ba2d5e8657647cf7387fa9b#1",
+      "size": 11
+    }
+  },
+  "s06.signerKeyHash": "167bb3e2fa586ce6808490f5b70b29c5c187c3d232f1743b2465cb50",
+  "s06.size": 1136,
+  "s06.slot": "163450000",
+  "s06.spendRefs": [
+    "spend:1",
+    "spend:2"
+  ],
+  "s06.timestamp": 1755016291,
+  "s06.treasury": "1620000000000000",
+  "s06.txHash": "f60fd52e20048eac62d0e1c22add5897aba1a21b96bbe46c5b355758965de49b",
+  "s06.txId": "tx_mainnet_f60fd52e2004",
+  "s06.txRowFile": "onchain__synthetic_s06/tx/mainnet/koios/f60fd52e20048eac62d0e1c22add5897aba1a21b96bbe46c5b355758965de49b.json",
+  "s06.utxoCount": 7,
+  "s06.validContract": true,
+  "s06.validity": {
+    "end": "163450145",
+    "start": "163449965"
+  },
+  "s06.vkeyCount": 1,
+  "s06.withdrawCalculated": {
+    "mem": "16306",
+    "steps": "6443916"
+  },
+  "s06.withdrawExUnits": {
+    "mem": "17285",
+    "steps": "7023869"
+  },
+  "s06.withdrawRef": "withdraw:0",
+  "s07.fee": "475707",
+  "s07.holderAddress": "addr1w8qv0j79fd4ked43x249a3c293zalej2rmpnshzfknkdj9chw7m47",
+  "s07.inlineDatumOutputs": 3,
+  "s07.inputs": [
+    {
+      "index": 0,
+      "txHash": "2514473d0fad3374c84ec440aea46de0ae315c7159478be627c94e576cb58ce6"
+    },
+    {
+      "index": 2,
+      "txHash": "d5a294bfcff675d43bef53ade2717e1049ce05df9ce10c92813a54d1086500ce"
+    }
+  ],
+  "s07.mintPolicies": [
+    "1913704d1ca1f806851cd800babfef305df895d58755e7487c844893",
+    "e9a564fb80baab5be1fe86710ff5d6ec9e22e2b8e66f5f9d2ea9df0d"
+  ],
+  "s07.network": "mainnet",
+  "s07.nftName": "53796e506f6f6c4e4654",
+  "s07.outputCount": 3,
+  "s07.redeemers": [
+    {
+      "index": 0,
+      "mem": "157483",
+      "ref": "mint:0",
+      "steps": "50983628"
+    },
+    {
+      "index": 1,
+      "mem": "36737",
+      "ref": "mint:1",
+      "steps": "13968137"
+    }
+  ],
+  "s07.refTokenName": "000643b053796e506f6f6c",
+  "s07.referenceDatum": {
+    "imageBytes": 4096,
+    "outputIndex": 0
+  },
+  "s07.scriptCount": 2,
+  "s07.scripts": [
+    {
+      "hash": "1913704d1ca1f806851cd800babfef305df895d58755e7487c844893",
+      "name": "pool_mint_a",
+      "size": 1203,
+      "version": "V3"
+    },
+    {
+      "hash": "e9a564fb80baab5be1fe86710ff5d6ec9e22e2b8e66f5f9d2ea9df0d",
+      "name": "pool_mint_b",
+      "size": 461,
+      "version": "V3"
+    }
+  ],
+  "s07.size": 6920,
+  "s07.slot": "150000000",
+  "s07.spans": {
+    "body": {
+      "length": 5082,
+      "offset": 1
+    },
+    "collateral": {
+      "length": 40,
+      "offset": 4939
+    },
+    "inputs": {
+      "length": 76,
+      "offset": 3
+    },
+    "redeemers": {
+      "length": 55,
+      "offset": 5191
+    },
+    "v3Scripts": {
+      "length": 1671,
+      "offset": 5247
+    },
+    "vkeys": {
+      "length": 105,
+      "offset": 5085
+    },
+    "witnessSet": {
+      "length": 1835,
+      "offset": 5083
+    }
+  },
+  "s07.txHash": "6ba85c6eb4beb13bf05b7273ce86891cb624253f4e73109bf08bf8fad7de19b6",
+  "s07.txId": "tx_mainnet_6ba85c6eb4be",
+  "s07.userTokenName": "000de14053796e506f6f6c",
+  "s07.vkeyCount": 1,
+  "s08.blockHash": "b1705d8e00b120710a94bd2d5925bffae00536e305c0fa8076d0bb5abd6aeb57",
+  "s08.blockHeight": 7507500,
+  "s08.collateralInput": "07473db5357bc1f4ab6526fe2f21e2dd90a7fbaa0443e0f01f9b5867a16a10fb#2",
+  "s08.datumCount": 1,
+  "s08.datumHash": "c3d3a4d4a47ab97586beaee04348e6e86a1dc9a4537392ef5bd7a62fafa981bf",
+  "s08.epoch": 545,
+  "s08.fee": "225081",
+  "s08.inputs": [
+    {
+      "index": 1,
+      "txHash": "947bc0b013710bb92f73670dd552eec0d73028ab775844da7d05f752a86de2ed"
+    },
+    {
+      "index": 0,
+      "txHash": "cf64dac5df6730fd0b8e5d41c497ca8de06e2687bc086fb6c22dcee5e9398d55"
+    }
+  ],
+  "s08.metadataLabels": [
+    674,
+    1337
+  ],
+  "s08.network": "mainnet",
+  "s08.out0Coin": "60000000",
+  "s08.out1Asset": {
+    "nameHex": "000de14053594e4152543031",
+    "policy": "5fe8fc1774801c7f96047b7b67d7df4ac085268e5ab8a3364a59fb9f",
+    "quantity": "1"
+  },
+  "s08.out1Coin": "654774919",
+  "s08.outputCount": 2,
+  "s08.providerRows": "lock-spend.provider-rows.json",
+  "s08.redeemer": {
+    "constructor": "1",
+    "index": 1,
+    "mem": "35097",
+    "ref": "spend:1",
+    "steps": "12653660",
+    "tag": "spend"
+  },
+  "s08.referenceInput": "1d7cd71ded0b936d0631e69851082c052ed0c015a10071c304877ea288a9ddf8#0",
+  "s08.referenceInputPrefix": "1d7cd71d",
+  "s08.requiredSigner": "ccfe0dd87ef9ad882ad876084fe37436806b510db438ad8a0881a917",
+  "s08.scriptAddress": "addr1w8r6ntkfauy6cfphsuy7mw5ea65nqukxr232uf7yakpt4scuh044t",
+  "s08.scriptHash": "c7a9aec9ef09ac24378709edba99eea93072c61aa2ae27c4ed82bac3",
+  "s08.scriptSize": 1098,
+  "s08.scriptVersion": "V2",
+  "s08.size": 1144,
+  "s08.slot": "150150000",
+  "s08.spendInput": "cf64dac5df6730fd0b8e5d41c497ca8de06e2687bc086fb6c22dcee5e9398d55#0",
+  "s08.ttl": "150155000",
+  "s08.txHash": "b81b48146e0feb34e0223a1763f5f603faf06633d0a76dfb20c46088d52a712c",
+  "s08.txId": "tx_mainnet_b81b48146e0f",
+  "s08.utxoCount": 4,
+  "s08.validityStart": "150149000",
+  "s08.vkeyCount": 3,
+  "s09.datumBytes": {
+    "max": 266,
+    "min": 265
+  },
+  "s09.datumOutputCount": 25,
+  "s09.fee": "800905",
+  "s09.metadataLabel": 721,
+  "s09.mintPolicy": "4d30deba004462c14634bfeca7bfca074cbe85bdee4678c15c1e5c04",
+  "s09.mintedAssetCount": 25,
+  "s09.network": "mainnet",
+  "s09.outputCount": 26,
+  "s09.referenceInputs": [
+    "f7258e2e54c82250f57551e9bd0a3c06b42420fc2e99f4316629cbcf0169cb10#0",
+    "d9719752521fbe198fa6192dc6c4bd11ceaf8740ea7af6e4d40fb9e8f6802851#1"
+  ],
+  "s09.size": 14672,
+  "s09.slot": "150450000",
+  "s09.txHash": "6c51e97d349ea6cbadc2cae2fc341cb404e30fc977c48b95e18c84654e3a529c",
+  "s09.txId": "tx_mainnet_6c51e97d349e",
+  "s09.vkeyCount": 1,
+  "s10.datumCount": 2,
+  "s10.fee": "238179",
+  "s10.inputs": [
+    {
+      "index": 0,
+      "txHash": "0ac0af45d2cfdac2c3c692ce353eac74a85d88922be61f280768eff59c2df369"
+    },
+    {
+      "index": 2,
+      "txHash": "59da3a799a11fbe1a3809217aee2bf5d932d83fd9641fd2128787ee39576963b"
+    },
+    {
+      "index": 1,
+      "txHash": "daef4860fc3d4cfb280047d13ace21fa3c3ee566862dba14a5ce7e54637fef6a"
+    }
+  ],
+  "s10.mintPolicy": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+  "s10.mintQuantity": "-1",
+  "s10.network": "mainnet",
+  "s10.outputCount": 4,
+  "s10.redeemerCount": 4,
+  "s10.redeemers": [
+    {
+      "index": 0,
+      "mem": "30403",
+      "steps": "9839067",
+      "tag": "spend"
+    },
+    {
+      "index": 1,
+      "mem": "1400",
+      "steps": "208100",
+      "tag": "spend"
+    },
+    {
+      "index": 0,
+      "mem": "56751",
+      "steps": "16101700",
+      "tag": "mint"
+    },
+    {
+      "index": 0,
+      "mem": "16306",
+      "steps": "6443916",
+      "tag": "reward"
+    }
+  ],
+  "s10.redeemersSpan": {
+    "length": 65,
+    "offset": 942
+  },
+  "s10.referenceInputs": [
+    "d76d1763a6a315de817939cb55b5134b4ac1ac624b387ed60b7dbf1738ac5171#0",
+    "75451da8eb5ca8da144fad197a95292b8c4d8eac36b027046c147472523a3099#0",
+    "34c450e215402c39cb4298d8b8de8948b9356edd26a9d33794066a4b42131240#1",
+    "e8bf80c775c9e4af1fa1ce344f50d2278d7783666aa80aca17b99f37dcdfcb8b#0"
+  ],
+  "s10.rewardAccount": "stake179xtnkaga34lwedqh4zrvck7v65mwjs86e54je6pn76qhdgjzacnv",
+  "s10.scriptHashes": {
+    "burn": "c40abb242a66d45861bd24f8f8d1d83e82bfc8f95dcc35af389e5b00",
+    "lock": "c7a9aec9ef09ac24378709edba99eea93072c61aa2ae27c4ed82bac3",
+    "reward": "4cb9dba8ec6bf765a0bd443662de66a9b74a07d6695967419fb40bb5",
+    "tiny": "f5503c65268747e4e37b10760913ee83d5f5eb18690d8c12e3dbd2df"
+  },
+  "s10.size": 1009,
+  "s10.slot": "150600000",
+  "s10.txHash": "039b53cc6a5b0f550b3a92900b37bc93f532cdbd93c796b00a1e574065860e1d",
+  "s10.txId": "tx_mainnet_039b53cc6a5b",
+  "s10.vkeyCount": 1,
+  "s11.assetName": "SYNUSD",
+  "s11.assetNameHex": "53594e555344",
+  "s11.byronAddress": "Ae2tdPwUPEZETm11WqXbD3RGUus7rhDZZ62LVhRcdHoJGk9yiARBVW7ZCmE",
+  "s11.changeCoin": "77817779",
+  "s11.datumCount": 1,
+  "s11.datumHash": "9d61303b92982448ce0e4d7ece93f36579d41e0884bdcee7c41ba328c1064597",
+  "s11.datumHex": "d8799fd8799fd8799f581c9c4be1974537038156fb87bffb69022fc183d35a4052f42c870db140ffd8799fd8799fd8799f581c5d6bd63a1abb5cc5f63a5cd6e5f427707c2bc78de4a5a2ba399b54ffffffffff581c9bf03c602827fd2ffd8ebec9c07fcd22bf82a788ca39236d544c5fc94653594e5553441a002625a0199c401b000001ba60d338004f73796e746865746963206f72646572ff",
+  "s11.fee": "182221",
+  "s11.hasCollateral": false,
+  "s11.hasRedeemers": false,
+  "s11.inputs": [
+    {
+      "index": 1,
+      "txHash": "021d704ca45e984f386fb8dadbef55720a65b5b5b74ee55cdeaf71eec5f7c6b4"
+    }
+  ],
+  "s11.lockCoin": "12000000",
+  "s11.makerAddress": "addr1qxwyhcvhg5ms8q2klwrml7mfqghurq7ntfq99apvsuxmzszad0tr5x4mtnzlvwju6mjlgfms0s4u0r0y5k3t5wvm2nls9ncscu",
+  "s11.makerAddressHex": "019c4be1974537038156fb87bffb69022fc183d35a4052f42c870db1405d6bd63a1abb5cc5f63a5cd6e5f427707c2bc78de4a5a2ba399b54ff",
+  "s11.makerPaymentKeyHash": "9c4be1974537038156fb87bffb69022fc183d35a4052f42c870db140",
+  "s11.makerStakeAddress": "stake1u9wkh436r2a4e30k8fwdde05yac8c2783hj2tg468xd4flc2vcz38",
+  "s11.makerStakeKeyHash": "5d6bd63a1abb5cc5f63a5cd6e5f427707c2bc78de4a5a2ba399b54ff",
+  "s11.metadataLabel": 674,
+  "s11.network": "mainnet",
+  "s11.outputCount": 2,
+  "s11.policyId": "9bf03c602827fd2ffd8ebec9c07fcd22bf82a788ca39236d544c5fc9",
+  "s11.scriptAddress": "addr1wxps79lx9j9pzt9mt97aazdfugudqgvke8gzevsrer4tuhcmlnk2y",
+  "s11.scriptAddressHex": "71830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+  "s11.scriptHash": "830f17e62c8a112cbb597dde89a9e238d02196c9d02cb203c8eabe5f",
+  "s11.size": 611,
+  "s11.slot": "150300000",
+  "s11.ttl": "150307200",
+  "s11.txHash": "6990b0350656ad4ffab62dd3bc25627f51056174a88642c12dbd556b022ba209",
+  "s11.txId": "tx_mainnet_6990b0350656",
+  "s11.unit": "9bf03c602827fd2ffd8ebec9c07fcd22bf82a788ca39236d544c5fc953594e555344",
+  "s11.vkeyCount": 1,
+  "s12.bodyHex": "a400d90102818258209905de1c57b9bdf587391faf376654a6bd020dd41d4b14d7ae9fc0f636c217fb02018182583901e173bf1d2deafe1d3b0b476cd5f21806afb29422bebead18cdcc2f90ff8a120c7e143b7d81a21b339c84710b132cb30ef9db796834baa1db1b000000075088fecf021a0002a51513a18202581c89edcb83bd8385d0c6bf5e101c146fe04e6cfb07891897dac6501392a1825820ecac681b6061cce5e3cea0de047b6f9d9e155b651198990811a5dea87842ddbd008200f6",
+  "s12.fee": "173333",
+  "s12.govActionIndex": 0,
+  "s12.govActionTxId": "ecac681b6061cce5e3cea0de047b6f9d9e155b651198990811a5dea87842ddbd",
+  "s12.inputIndex": 2,
+  "s12.inputTxHash": "9905de1c57b9bdf587391faf376654a6bd020dd41d4b14d7ae9fc0f636c217fb",
+  "s12.network": "mainnet",
+  "s12.outputAddress": "addr1q8sh80ca9h40u8fmpdrke40jrqr2lv55y2ltatgcehxzly8l3gfqcls58d7crgsmxwwggugtzvktxrhemduksd9658dsswxa9n",
+  "s12.outputAddressHex": "01e173bf1d2deafe1d3b0b476cd5f21806afb29422bebead18cdcc2f90ff8a120c7e143b7d81a21b339c84710b132cb30ef9db796834baa1db",
+  "s12.outputCoin": "31415926479",
+  "s12.size": 197,
+  "s12.spans": {
+    "aux": {
+      "length": 1,
+      "offset": 196
+    },
+    "body": {
+      "length": 193,
+      "offset": 1
+    },
+    "fee": {
+      "length": 5,
+      "offset": 115
+    },
+    "feeKey": {
+      "length": 1,
+      "offset": 114
+    },
+    "inputs": {
+      "length": 40,
+      "offset": 3
+    },
+    "inputsKey": {
+      "length": 1,
+      "offset": 2
+    },
+    "isValid": {
+      "length": 1,
+      "offset": 195
+    },
+    "outputs": {
+      "length": 70,
+      "offset": 44
+    },
+    "outputsKey": {
+      "length": 1,
+      "offset": 43
+    },
+    "tx": {
+      "length": 197,
+      "offset": 0
+    },
+    "votes": {
+      "length": 73,
+      "offset": 121
+    },
+    "votesKey": {
+      "length": 1,
+      "offset": 120
+    },
+    "witnessSet": {
+      "length": 1,
+      "offset": 194
+    }
+  },
+  "s12.truncated": {
+    "minus10": {
+      "kind": "unexpected_eof",
+      "length": 187,
+      "offset": 158,
+      "path": "$[0].entries[3].value.entries[0].value.entries[0].key[0]"
+    },
+    "minus20": {
+      "kind": "unexpected_eof",
+      "length": 177,
+      "offset": 158,
+      "path": "$[0].entries[3].value.entries[0].value.entries[0].key[0]"
+    }
+  },
+  "s12.txHash": "1521ba4c4388fb7293e3efd5b7146c71f5b234f8e76a8bf9cc04542bbd2f979f",
+  "s12.txId": "tx_mainnet_1521ba4c4388",
+  "s12.voterKeyHash": "89edcb83bd8385d0c6bf5e101c146fe04e6cfb07891897dac6501392"
+}

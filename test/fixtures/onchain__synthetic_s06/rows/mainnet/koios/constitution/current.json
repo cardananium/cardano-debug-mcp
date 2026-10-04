@@ -1,0 +1,7 @@
+{
+  "constitution": {
+    "anchorDataHash": "c19a7d3ab01d88b65c85e623ebfb92f35f5d14b91edf84714304a57d59386317",
+    "anchorUrl": "https://example.invalid/synthetic/constitution",
+    "guardrailScriptHash": "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf"
+  }
+}

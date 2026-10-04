@@ -1,0 +1,22 @@
+{
+  "address": "addr1q8k77t3rhpeqn70zulw3ff6h20rx0l9zpz793mxaxurj4a86uexd43wu2tzwcsvw8q9dhdxerga78s3avm56844jhg9sxm68j4",
+  "asset_list": [],
+  "block_height": 8017500,
+  "block_time": 1751916291,
+  "datum_hash": null,
+  "epoch_no": 568,
+  "inline_datum": null,
+  "is_spent": false,
+  "payment_cred": "edef2e23b87209f9e2e7dd14a75753c667fca208bc58ecdd37072af4",
+  "reference_script": {
+    "bytes": "58ac0100003232323232323223225333004323253330063370e900018041baa00513375e600260126ea8c008c024dd5001980098049baa3002300937540062a6600e9201117265776172645f6f6b3a2064656e6965640014a0460166018601860180024601400229309b2b19299980199b874800000454ccc01cc018dd50010a4c2c2a66600666e1d200200115333007300637540042930b0b18021baa0015734ae7155ceaab9e5573eae855d101",
+    "hash": "4cb9dba8ec6bf765a0bd443662de66a9b74a07d6695967419fb40bb5",
+    "size": 174,
+    "type": "plutusV2",
+    "value": null
+  },
+  "stake_address": "stake1u8awvnx6chw9938vgx8rszkmknv35wlrcg7kd6dr66et5zcqst93r",
+  "tx_hash": "5a6f90d2a750c52f75c3b86d273e32cd14cac45987f389eacbbd653e96232398",
+  "tx_index": 2,
+  "value": "2767100"
+}

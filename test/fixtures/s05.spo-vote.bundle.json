@@ -1,0 +1,1694 @@
+{
+ "captured_at": "2026-03-01T09:30:00.000Z",
+ "cardano_debug_bundle": 1,
+ "network": "mainnet",
+ "origin": "koios",
+ "protocol_major": 11,
+ "provider_rows": {
+  "account_info": [],
+  "cache_hits": [],
+  "drep_info": [],
+  "network": "mainnet",
+  "pool_info": [],
+  "proposals": [
+   {
+    "block_time": 1700000000,
+    "deposit": "100000000000",
+    "dropped_epoch": null,
+    "enacted_epoch": 637,
+    "expiration": 636,
+    "expired_epoch": null,
+    "meta_comment": null,
+    "meta_hash": "ee3a11e59bae0c3954b87df00287170a1ef5b3107a8fd342cd96585c35e98268",
+    "meta_is_valid": true,
+    "meta_json": null,
+    "meta_language": "en-us",
+    "meta_url": "https://example.invalid/synthetic/s05-parameter-change",
+    "param_proposal": {
+     "max_block_ex_mem": 76000000,
+     "max_block_ex_steps": 21000000000,
+     "max_tx_ex_mem": 15500000,
+     "max_tx_ex_steps": 10500000000
+    },
+    "previous_gov_action_proposal_id": null,
+    "proposal_description": {
+     "contents": [
+      {
+       "govActionIx": 0,
+       "txId": "67ec7de23e02e07d0cf308f73811f6c57d0fa1437f1990d666c64ff7db99544e"
+      },
+      {
+       "maxBlockExecutionUnits": {
+        "memory": 76000000,
+        "steps": 21000000000
+       },
+       "maxTxExecutionUnits": {
+        "memory": 15500000,
+        "steps": 10500000000
+       }
+      },
+      "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf"
+     ],
+     "tag": "ParameterChange"
+    },
+    "proposal_id": "gov_action1u0x9hm5dpsxtlza4y0ckd97tqm7hd2hkzpcp5xpcf0z40nqqvgeqq0jnw4c",
+    "proposal_index": 0,
+    "proposal_tx_hash": "e3cc5bee8d0c0cbf8bb523f16697cb06fd76aaf610701a18384bc557cc006232",
+    "proposal_type": "ParameterChange",
+    "proposed_epoch": 629,
+    "ratified_epoch": 636,
+    "return_address": "stake1uys6w05sxsayr7zwzavesu4444g5kwukx03wurkml4pw0qgugnxkf",
+    "withdrawal": []
+   }
+  ],
+  "provider": "koios",
+  "tx_cbor": [],
+  "utxo_info": []
+ },
+ "slot": "190080000",
+ "tx_cbor": "84a6008b82582021b86a905d0ca228b101385ecf5b15f3fd8157106c0e2466cc725f3d70a0d0f000825820251e6306eeb8248a25bff570f974126c361ff69e022c3504dc3cf32ac3bc840b058258202e3e68b2fc57ea50046b1e2dca0370c6e3588cfd344f63c6047e2c7dafafaa69018258203871733c9cca1e91809ce1b28121a4970130998b1f259d099df36102eb646fdb0f82582040639ce32d4f2ac77d8a09326643aa7a83352eb01624bc4bdadcd0a409d299e302825820578baff3062ee89c55a5ffce94c6a4098f6ca9fbd8cb96f94347074f5ae1f83a0482582059d452129f17ebe5eef90853055634ac13f1f7e6b3690a42222bc3236c5b1d23078258209c6fab6e3f4c42ba96a24cec12928359d5c3752e5e7648646b7c2eaf9d817b0809825820a4ae76821d3d7ae6b609f0b0216833c19166cc804bcb3af85fb7dc04212c6d8012825820cd2cfe043fcabe823df03986fd2e369a873ab58461ac34dfff3b141d7ee3b90b03825820d26821d0b3b76a74a1a3e73e4142f276d60289960c3e73d4fe93127542f11fab0b0181825839015f77639a74ad3c6b9c00d81b3d09d56ec43c4c0fd95836aa55836b6cf6046bfad54ac29c1465f2c593be8d8491dd78746838f93f23e169911b00000002c5ffa833021a000309cd031a0b54802005a1581de1f6046bfad54ac29c1465f2c593be8d8491dd78746838f93f23e169911b000000022a52bd0013a18204581c013a59b2709f35c505f08cadfb8aed730ce7d8ad8c7503b30ab5e02ba1825820e3cc5bee8d0c0cbf8bb523f16697cb06fd76aaf610701a18384bc557cc00623200820182783468747470733a2f2f6578616d706c652e696e76616c69642f73796e7468657469632f7330352d766f74652d726174696f6e616c655820df564691fb3d1452fa17b3c91816c532c08130e9e5242cbf72a56e2ca992a7f8a10083825820fa741c0471399aebeb6aa692813ddc84fb0b9831d3afcd0cd8b24c20093fe06c58409c255e49080186c08a8a28862413e30c2daf63040cd3a58e9bc60ae25b8971f562163bd05386ecec196a9fbe3eb77e4ff52ecaef5e43618f1a643cb5651c310282582059556090f689d8675a5b1f36e01e1a162157cb3fb907802136596a8520adf72d58409c0d20d3c828a0b169aca07080ae4db3e9dde18d5e56fdf695c5bc333cb75d61c7b8c2d97f2d2817705f79bdd9a32fd6b2edb056e91a020ed350d26ccf2fa50e825820f18cc3135ed0fcd4bca7c2ff9ce08b9b3c31497e099ce30c8c1f79f751e4bdc45840d243c6c544826533d405ab6bb3cf69be4f71368a807341e1fcdb4439d776f8e954c71c547b528bc4e11762d4186fe8beb0aa41546ca73dc788436a086af9a201f5f6",
+ "tx_hash": "c5fce8035b49a1558116daee439ecec03e05e7ad323575d6db14be29cbb25b59",
+ "validation_input_context": {
+  "accountContexts": [
+   {
+    "balance": 4200000000,
+    "bech32Address": "stake1u8mqg6l6649v98q5vhevtya73kzfrhtcw35r37fly0sknygcx20cy",
+    "delegatedToDrep": "drep1yg8yud0ljllvzgpxencs2p92rp08my8v20l2436fww5sxvsj78c3v",
+    "delegatedToPool": "pool1qya9nvnsnu6u2p0s3jklhzhdwvxw0k9d336s8vc2khszkp9nuyp",
+    "isRegistered": true,
+    "payedDeposit": 2000000
+   }
+  ],
+  "constitution": {
+   "guardrailScriptHash": "83b52be2b591f8cca5532f2800bd114f414e0e223b4556f4c8b65fcf"
+  },
+  "currentCommitteeMembers": [],
+  "drepContexts": [],
+  "govActionContexts": [
+   {
+    "actionId": {
+     "index": 0,
+     "txHash": [
+      227,
+      204,
+      91,
+      238,
+      141,
+      12,
+      12,
+      191,
+      139,
+      181,
+      35,
+      241,
+      102,
+      151,
+      203,
+      6,
+      253,
+      118,
+      170,
+      246,
+      16,
+      112,
+      26,
+      24,
+      56,
+      75,
+      197,
+      87,
+      204,
+      0,
+      98,
+      50
+     ]
+    },
+    "actionType": "parameterChangeAction",
+    "isActive": true
+   }
+  ],
+  "lastEnactedGovAction": [],
+  "networkType": "mainnet",
+  "poolContexts": [
+   {
+    "isRegistered": true,
+    "poolId": "013a59b2709f35c505f08cadfb8aed730ce7d8ad8c7503b30ab5e02b",
+    "retirementEpoch": null
+   }
+  ],
+  "potentialCommitteeMembers": [],
+  "protocolParameters": {
+   "adaPerUtxoByte": 4310,
+   "collateralPercentage": 150,
+   "costModels": {
+    "plutusV1": [
+     100788,
+     420,
+     1,
+     1,
+     1000,
+     173,
+     0,
+     1,
+     1000,
+     59957,
+     4,
+     1,
+     11183,
+     32,
+     201305,
+     8356,
+     4,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     100,
+     100,
+     16000,
+     100,
+     94375,
+     32,
+     132994,
+     32,
+     61462,
+     4,
+     72010,
+     178,
+     0,
+     1,
+     22151,
+     32,
+     91189,
+     769,
+     4,
+     2,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     1000,
+     42921,
+     4,
+     2,
+     30623,
+     28755,
+     75,
+     1,
+     898148,
+     27279,
+     1,
+     51775,
+     558,
+     1,
+     39184,
+     1000,
+     60594,
+     1,
+     141895,
+     32,
+     83150,
+     32,
+     15299,
+     32,
+     76049,
+     1,
+     13169,
+     4,
+     22100,
+     10,
+     28999,
+     74,
+     1,
+     28999,
+     74,
+     1,
+     43285,
+     552,
+     1,
+     44749,
+     541,
+     1,
+     33852,
+     32,
+     68246,
+     32,
+     72362,
+     32,
+     7243,
+     32,
+     7391,
+     32,
+     11546,
+     32,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     90434,
+     519,
+     0,
+     1,
+     74433,
+     32,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     270652,
+     22588,
+     4,
+     1457325,
+     64566,
+     4,
+     20467,
+     1,
+     4,
+     0,
+     141992,
+     32,
+     100788,
+     420,
+     1,
+     1,
+     81663,
+     32,
+     59498,
+     32,
+     20142,
+     32,
+     24588,
+     32,
+     20744,
+     32,
+     25933,
+     32,
+     24623,
+     32,
+     53384111,
+     14333,
+     10,
+     955506,
+     213312,
+     0,
+     2,
+     43053543,
+     10,
+     43574283,
+     26308,
+     10,
+     16000,
+     100,
+     16000,
+     100,
+     962335,
+     18,
+     2780678,
+     6,
+     442008,
+     1,
+     52538055,
+     3756,
+     18,
+     267929,
+     18,
+     76433006,
+     8868,
+     18,
+     52948122,
+     18,
+     1995836,
+     36,
+     3227919,
+     12,
+     901022,
+     1,
+     166917843,
+     4307,
+     36,
+     284546,
+     36,
+     158221314,
+     26549,
+     36,
+     74698472,
+     36,
+     333849714,
+     1,
+     254006273,
+     72,
+     2174038,
+     72,
+     2261318,
+     64571,
+     4,
+     207616,
+     8310,
+     4,
+     1293828,
+     28716,
+     63,
+     0,
+     1,
+     1006041,
+     43623,
+     251,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     107878,
+     680,
+     0,
+     1,
+     95336,
+     1,
+     281145,
+     18848,
+     0,
+     1,
+     180194,
+     159,
+     1,
+     1,
+     158519,
+     8942,
+     0,
+     1,
+     159378,
+     8813,
+     0,
+     1,
+     107490,
+     3298,
+     1,
+     106057,
+     655,
+     1,
+     1964219,
+     24520,
+     3,
+     607153,
+     231697,
+     53144,
+     0,
+     1,
+     116711,
+     1957,
+     4,
+     231883,
+     10,
+     1000,
+     24838,
+     7,
+     1,
+     232010,
+     32,
+     321837444,
+     25087669,
+     18,
+     617887431,
+     67302824,
+     36,
+     356924,
+     18413,
+     45,
+     21,
+     219951,
+     9444,
+     1,
+     1000,
+     172116,
+     183150,
+     6,
+     24,
+     21,
+     213283,
+     618401,
+     1998,
+     28258,
+     1,
+     1000,
+     38159,
+     2,
+     22,
+     1000,
+     95933,
+     1,
+     1,
+     11,
+     1000,
+     277577,
+     12,
+     21
+    ],
+    "plutusV2": [
+     100788,
+     420,
+     1,
+     1,
+     1000,
+     173,
+     0,
+     1,
+     1000,
+     59957,
+     4,
+     1,
+     11183,
+     32,
+     201305,
+     8356,
+     4,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     100,
+     100,
+     16000,
+     100,
+     94375,
+     32,
+     132994,
+     32,
+     61462,
+     4,
+     72010,
+     178,
+     0,
+     1,
+     22151,
+     32,
+     91189,
+     769,
+     4,
+     2,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     1000,
+     42921,
+     4,
+     2,
+     30623,
+     28755,
+     75,
+     1,
+     898148,
+     27279,
+     1,
+     51775,
+     558,
+     1,
+     39184,
+     1000,
+     60594,
+     1,
+     141895,
+     32,
+     83150,
+     32,
+     15299,
+     32,
+     76049,
+     1,
+     13169,
+     4,
+     22100,
+     10,
+     28999,
+     74,
+     1,
+     28999,
+     74,
+     1,
+     43285,
+     552,
+     1,
+     44749,
+     541,
+     1,
+     33852,
+     32,
+     68246,
+     32,
+     72362,
+     32,
+     7243,
+     32,
+     7391,
+     32,
+     11546,
+     32,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     90434,
+     519,
+     0,
+     1,
+     74433,
+     32,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     85848,
+     228465,
+     122,
+     0,
+     1,
+     1,
+     955506,
+     213312,
+     0,
+     2,
+     270652,
+     22588,
+     4,
+     1457325,
+     64566,
+     4,
+     20467,
+     1,
+     4,
+     0,
+     141992,
+     32,
+     100788,
+     420,
+     1,
+     1,
+     81663,
+     32,
+     59498,
+     32,
+     20142,
+     32,
+     24588,
+     32,
+     20744,
+     32,
+     25933,
+     32,
+     24623,
+     32,
+     43053543,
+     10,
+     53384111,
+     14333,
+     10,
+     43574283,
+     26308,
+     10,
+     1293828,
+     28716,
+     63,
+     0,
+     1,
+     1006041,
+     43623,
+     251,
+     0,
+     1,
+     16000,
+     100,
+     16000,
+     100,
+     962335,
+     18,
+     2780678,
+     6,
+     442008,
+     1,
+     52538055,
+     3756,
+     18,
+     267929,
+     18,
+     76433006,
+     8868,
+     18,
+     52948122,
+     18,
+     1995836,
+     36,
+     3227919,
+     12,
+     901022,
+     1,
+     166917843,
+     4307,
+     36,
+     284546,
+     36,
+     158221314,
+     26549,
+     36,
+     74698472,
+     36,
+     333849714,
+     1,
+     254006273,
+     72,
+     2174038,
+     72,
+     2261318,
+     64571,
+     4,
+     207616,
+     8310,
+     4,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     107878,
+     680,
+     0,
+     1,
+     95336,
+     1,
+     281145,
+     18848,
+     0,
+     1,
+     180194,
+     159,
+     1,
+     1,
+     158519,
+     8942,
+     0,
+     1,
+     159378,
+     8813,
+     0,
+     1,
+     107490,
+     3298,
+     1,
+     106057,
+     655,
+     1,
+     1964219,
+     24520,
+     3,
+     607153,
+     231697,
+     53144,
+     0,
+     1,
+     116711,
+     1957,
+     4,
+     231883,
+     10,
+     1000,
+     24838,
+     7,
+     1,
+     232010,
+     32,
+     321837444,
+     25087669,
+     18,
+     617887431,
+     67302824,
+     36,
+     356924,
+     18413,
+     45,
+     21,
+     219951,
+     9444,
+     1,
+     1000,
+     172116,
+     183150,
+     6,
+     24,
+     21,
+     213283,
+     618401,
+     1998,
+     28258,
+     1,
+     1000,
+     38159,
+     2,
+     22,
+     1000,
+     95933,
+     1,
+     1,
+     11,
+     1000,
+     277577,
+     12,
+     21
+    ],
+    "plutusV3": [
+     100788,
+     420,
+     1,
+     1,
+     1000,
+     173,
+     0,
+     1,
+     1000,
+     59957,
+     4,
+     1,
+     11183,
+     32,
+     201305,
+     8356,
+     4,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     16000,
+     100,
+     100,
+     100,
+     16000,
+     100,
+     94375,
+     32,
+     132994,
+     32,
+     61462,
+     4,
+     72010,
+     178,
+     0,
+     1,
+     22151,
+     32,
+     91189,
+     769,
+     4,
+     2,
+     85848,
+     123203,
+     7305,
+     -900,
+     1716,
+     960,
+     57,
+     85848,
+     0,
+     1,
+     1,
+     1000,
+     42921,
+     4,
+     2,
+     30623,
+     28755,
+     75,
+     1,
+     898148,
+     27279,
+     1,
+     51775,
+     558,
+     1,
+     39184,
+     1000,
+     60594,
+     1,
+     141895,
+     32,
+     83150,
+     32,
+     15299,
+     32,
+     76049,
+     1,
+     13169,
+     4,
+     22100,
+     10,
+     28999,
+     74,
+     1,
+     28999,
+     74,
+     1,
+     43285,
+     552,
+     1,
+     44749,
+     541,
+     1,
+     33852,
+     32,
+     68246,
+     32,
+     72362,
+     32,
+     7243,
+     32,
+     7391,
+     32,
+     11546,
+     32,
+     85848,
+     123203,
+     7305,
+     -900,
+     1716,
+     960,
+     57,
+     85848,
+     0,
+     1,
+     90434,
+     519,
+     0,
+     1,
+     74433,
+     32,
+     85848,
+     123203,
+     7305,
+     -900,
+     1716,
+     960,
+     57,
+     85848,
+     0,
+     1,
+     1,
+     85848,
+     123203,
+     7305,
+     -900,
+     1716,
+     960,
+     57,
+     85848,
+     0,
+     1,
+     955506,
+     213312,
+     0,
+     2,
+     270652,
+     22588,
+     4,
+     1457325,
+     64566,
+     4,
+     20467,
+     1,
+     4,
+     0,
+     141992,
+     32,
+     100788,
+     420,
+     1,
+     1,
+     81663,
+     32,
+     59498,
+     32,
+     20142,
+     32,
+     24588,
+     32,
+     20744,
+     32,
+     25933,
+     32,
+     24623,
+     32,
+     43053543,
+     10,
+     53384111,
+     14333,
+     10,
+     43574283,
+     26308,
+     10,
+     16000,
+     100,
+     16000,
+     100,
+     962335,
+     18,
+     2780678,
+     6,
+     442008,
+     1,
+     52538055,
+     3756,
+     18,
+     267929,
+     18,
+     76433006,
+     8868,
+     18,
+     52948122,
+     18,
+     1995836,
+     36,
+     3227919,
+     12,
+     901022,
+     1,
+     166917843,
+     4307,
+     36,
+     284546,
+     36,
+     158221314,
+     26549,
+     36,
+     74698472,
+     36,
+     333849714,
+     1,
+     254006273,
+     72,
+     2174038,
+     72,
+     2261318,
+     64571,
+     4,
+     207616,
+     8310,
+     4,
+     1293828,
+     28716,
+     63,
+     0,
+     1,
+     1006041,
+     43623,
+     251,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     100181,
+     726,
+     719,
+     0,
+     1,
+     107878,
+     680,
+     0,
+     1,
+     95336,
+     1,
+     281145,
+     18848,
+     0,
+     1,
+     180194,
+     159,
+     1,
+     1,
+     158519,
+     8942,
+     0,
+     1,
+     159378,
+     8813,
+     0,
+     1,
+     107490,
+     3298,
+     1,
+     106057,
+     655,
+     1,
+     1964219,
+     24520,
+     3,
+     607153,
+     231697,
+     53144,
+     0,
+     1,
+     116711,
+     1957,
+     4,
+     231883,
+     10,
+     1000,
+     24838,
+     7,
+     1,
+     232010,
+     32,
+     321837444,
+     25087669,
+     18,
+     617887431,
+     67302824,
+     36,
+     356924,
+     18413,
+     45,
+     21,
+     219951,
+     9444,
+     1,
+     1000,
+     172116,
+     183150,
+     6,
+     24,
+     21,
+     213283,
+     618401,
+     1998,
+     28258,
+     1,
+     1000,
+     38159,
+     2,
+     22,
+     1000,
+     95933,
+     1,
+     1,
+     11,
+     1000,
+     277577,
+     12,
+     21
+    ]
+   },
+   "drepDeposit": 500000000,
+   "executionPrices": {
+    "memPrice": {
+     "denominator": 10000,
+     "numerator": 577
+    },
+    "stepPrice": {
+     "denominator": 10000000,
+     "numerator": 721
+    }
+   },
+   "governanceActionDeposit": 100000000000,
+   "maxBlockBodySize": 90112,
+   "maxBlockExecutionUnits": {
+    "mem": 72000000,
+    "steps": 20000000000
+   },
+   "maxBlockHeaderSize": 1100,
+   "maxCollateralInputs": 3,
+   "maxEpochForPoolRetirement": 18,
+   "maxTransactionSize": 16384,
+   "maxTxExecutionUnits": {
+    "mem": 16500000,
+    "steps": 10000000000
+   },
+   "maxValueSize": 5000,
+   "minFeeCoefficientA": 44,
+   "minFeeConstantB": 155381,
+   "minPoolCost": 170000000,
+   "protocolVersion": [
+    11,
+    0
+   ],
+   "referenceScriptCostPerByte": {
+    "denominator": 1,
+    "numerator": 15
+   },
+   "stakeKeyDeposit": 2000000,
+   "stakePoolDeposit": 500000000
+  },
+  "slot": 190080000,
+  "treasuryValue": 1380000000000000,
+  "utxoSet": [
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 18,
+      "txHash": "a4ae76821d3d7ae6b609f0b0216833c19166cc804bcb3af85fb7dc04212c6d80"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "1200000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 15,
+      "txHash": "3871733c9cca1e91809ce1b28121a4970130998b1f259d099df36102eb646fdb"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "450000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 2,
+      "txHash": "40639ce32d4f2ac77d8a09326643aa7a83352eb01624bc4bdadcd0a409d299e3"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "300000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 7,
+      "txHash": "59d452129f17ebe5eef90853055634ac13f1f7e6b3690a42222bc3236c5b1d23"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "275000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 0,
+      "txHash": "21b86a905d0ca228b101385ecf5b15f3fd8157106c0e2466cc725f3d70a0d0f0"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "150000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 4,
+      "txHash": "578baff3062ee89c55a5ffce94c6a4098f6ca9fbd8cb96f94347074f5ae1f83a"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "90000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 9,
+      "txHash": "9c6fab6e3f4c42ba96a24cec12928359d5c3752e5e7648646b7c2eaf9d817b08"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "60000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 1,
+      "txHash": "2e3e68b2fc57ea50046b1e2dca0370c6e3588cfd344f63c6047e2c7dafafaa69"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "42000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 3,
+      "txHash": "cd2cfe043fcabe823df03986fd2e369a873ab58461ac34dfff3b141d7ee3b90b"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "25000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 11,
+      "txHash": "d26821d0b3b76a74a1a3e73e4142f276d60289960c3e73d4fe93127542f11fab"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "12000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   },
+   {
+    "isSpent": true,
+    "utxo": {
+     "input": {
+      "outputIndex": 5,
+      "txHash": "251e6306eeb8248a25bff570f974126c361ff69e022c3504dc3cf32ac3bc840b"
+     },
+     "output": {
+      "address": "addr1q90hwcu6wjknc6uuqrvpk0gf64hvg0zvplv4sd422kpkkm8kq34l4422c2wpge0jckfmarvyj8whsarg8run7glpdxgszuza8p",
+      "amount": [
+       {
+        "quantity": "8000000",
+        "unit": "lovelace"
+       }
+      ],
+      "dataHash": null,
+      "plutusData": null,
+      "scriptHash": null,
+      "scriptRef": null
+     }
+    }
+   }
+  ]
+ },
+ "validation_result": {
+  "errors": [
+   {
+    "error": {
+     "WrongRequestedWithdrawalAmount": {
+      "expected_amount": 4200000000,
+      "requested_amount": 9300000000,
+      "reward_address": "stake1u8mqg6l6649v98q5vhevtya73kzfrhtcw35r37fly0sknygcx20cy"
+     }
+    },
+    "error_message": "Wrong requested withdrawal amount. Expected: 4200000000, Requested: 9300000000, Reward address: stake1u8mqg6l6649v98q5vhevtya73kzfrhtcw35r37fly0sknygcx20cy",
+    "hint": "Update the withdrawal amount to match the exact balance available in the reward account. Check that you are withdrawing from the correct account.",
+    "locations": [
+     "transaction.body.withdrawals.0"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 0,
+       "txHash": "21b86a905d0ca228b101385ecf5b15f3fd8157106c0e2466cc725f3d70a0d0f0"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 0, tx_hash: \"21b86a905d0ca228b101385ecf5b15f3fd8157106c0e2466cc725f3d70a0d0f0\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.0"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 5,
+       "txHash": "251e6306eeb8248a25bff570f974126c361ff69e022c3504dc3cf32ac3bc840b"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 5, tx_hash: \"251e6306eeb8248a25bff570f974126c361ff69e022c3504dc3cf32ac3bc840b\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.1"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 1,
+       "txHash": "2e3e68b2fc57ea50046b1e2dca0370c6e3588cfd344f63c6047e2c7dafafaa69"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 1, tx_hash: \"2e3e68b2fc57ea50046b1e2dca0370c6e3588cfd344f63c6047e2c7dafafaa69\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.2"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 15,
+       "txHash": "3871733c9cca1e91809ce1b28121a4970130998b1f259d099df36102eb646fdb"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 15, tx_hash: \"3871733c9cca1e91809ce1b28121a4970130998b1f259d099df36102eb646fdb\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.3"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 2,
+       "txHash": "40639ce32d4f2ac77d8a09326643aa7a83352eb01624bc4bdadcd0a409d299e3"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 2, tx_hash: \"40639ce32d4f2ac77d8a09326643aa7a83352eb01624bc4bdadcd0a409d299e3\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.4"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 4,
+       "txHash": "578baff3062ee89c55a5ffce94c6a4098f6ca9fbd8cb96f94347074f5ae1f83a"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 4, tx_hash: \"578baff3062ee89c55a5ffce94c6a4098f6ca9fbd8cb96f94347074f5ae1f83a\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.5"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 7,
+       "txHash": "59d452129f17ebe5eef90853055634ac13f1f7e6b3690a42222bc3236c5b1d23"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 7, tx_hash: \"59d452129f17ebe5eef90853055634ac13f1f7e6b3690a42222bc3236c5b1d23\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.6"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 9,
+       "txHash": "9c6fab6e3f4c42ba96a24cec12928359d5c3752e5e7648646b7c2eaf9d817b08"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 9, tx_hash: \"9c6fab6e3f4c42ba96a24cec12928359d5c3752e5e7648646b7c2eaf9d817b08\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.7"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 18,
+       "txHash": "a4ae76821d3d7ae6b609f0b0216833c19166cc804bcb3af85fb7dc04212c6d80"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 18, tx_hash: \"a4ae76821d3d7ae6b609f0b0216833c19166cc804bcb3af85fb7dc04212c6d80\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.8"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 3,
+       "txHash": "cd2cfe043fcabe823df03986fd2e369a873ab58461ac34dfff3b141d7ee3b90b"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 3, tx_hash: \"cd2cfe043fcabe823df03986fd2e369a873ab58461ac34dfff3b141d7ee3b90b\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.9"
+    ]
+   },
+   {
+    "error": {
+     "BadInputsUTxO": {
+      "invalid_input": {
+       "outputIndex": 11,
+       "txHash": "d26821d0b3b76a74a1a3e73e4142f276d60289960c3e73d4fe93127542f11fab"
+      }
+     }
+    },
+    "error_message": "Transaction contains invalid or already spent input UTxO: TxInput { output_index: 11, tx_hash: \"d26821d0b3b76a74a1a3e73e4142f276d60289960c3e73d4fe93127542f11fab\" }",
+    "hint": "Ensure all transaction inputs reference valid, unspent UTxOs. Check that the UTxO exists in the current ledger state and hasn't been consumed by another transaction.",
+    "locations": [
+     "transaction.body.inputs.10"
+    ]
+   },
+   {
+    "error": {
+     "DisallowedVoters": {
+      "disallowed_pairs": [
+       [
+        {
+         "stakingPoolKeyHash": "013a59b2709f35c505f08cadfb8aed730ce7d8ad8c7503b30ab5e02b"
+        },
+        {
+         "index": 0,
+         "txHash": [
+          227,
+          204,
+          91,
+          238,
+          141,
+          12,
+          12,
+          191,
+          139,
+          181,
+          35,
+          241,
+          102,
+          151,
+          203,
+          6,
+          253,
+          118,
+          170,
+          246,
+          16,
+          112,
+          26,
+          24,
+          56,
+          75,
+          197,
+          87,
+          204,
+          0,
+          98,
+          50
+         ]
+        }
+       ]
+      ]
+     }
+    },
+    "error_message": "Voters not allowed for specified governance actions: [(StakingPoolKeyHash(\"013a59b2709f35c505f08cadfb8aed730ce7d8ad8c7503b30ab5e02b\"), GovernanceActionId { tx_hash: [227, 204, 91, 238, 141, 12, 12, 191, 139, 181, 35, 241, 102, 151, 203, 6, 253, 118, 170, 246, 16, 112, 26, 24, 56, 75, 197, 87, 204, 0, 98, 50], index: 0 })]",
+    "hint": "The voter kind may not vote on this action type: stake pools do not vote on NewConstitution or TreasuryWithdrawals, nor on a ParameterChange unless it changes a security-group parameter (txFeePerByte, txFeeFixed, maxBlockBodySize, maxTxSize, maxBlockHeaderSize, utxoCostPerByte, maxBlockExecutionUnits, maxValueSize, govActionDeposit, minFeeRefScriptCostPerByte); the constitutional committee does not vote on NoConfidence or UpdateCommittee. For a stake pool vote on a ParameterChange whose changed parameters the validation context does not list (govActionContexts[].changedParameters), this is reported without that knowledge: check the proposal before removing the vote.",
+    "locations": [
+     "transaction.body.voting_procedures.0.0"
+    ]
+   }
+  ],
+  "eval_redeemer_results": [],
+  "phase2_errors": [],
+  "phase2_warnings": [],
+  "warnings": []
+ }
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+*.tsbuildinfo
+.cache
+.DS_Store
+coverage
+# Aiken build output (plutus.json and aiken.lock are committed)
+test/fixtures/synthetic/aiken-v2/build/
+test/fixtures/synthetic/aiken-v3/build/
+dev/

@@ -1,0 +1,3 @@
+[submodule "deps/de-uplc-web"]
+	path = deps/de-uplc-web
+	url = https://github.com/cardananium/de-uplc-web.git

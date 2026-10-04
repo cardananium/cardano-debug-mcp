@@ -1,0 +1,72 @@
+{
+  "address": "addr1z8r6ntkfauy6cfphsuy7mw5ea65nqukxr232uf7yakpt4scklantmmwp47hggwtv0etytl5esdqy468e3v8nstlcx5esvtfnmp",
+  "asset_list": [
+    {
+      "asset_name": "4c4f434b",
+      "decimals": 0,
+      "fingerprint": "asset1sg5nsp2aec8kaeam8z9cl39w8m85j0pwwvmtsv",
+      "policy_id": "fbe6323c95bd40c0f541063e7b1d15450e56ab8099599d36dc9def38",
+      "quantity": "1"
+    },
+    {
+      "asset_name": "53594e5448",
+      "decimals": 0,
+      "fingerprint": "asset14wrrhza244sfny9an4xs9jsj6e2l3zzf8hmrge",
+      "policy_id": "fbe6323c95bd40c0f541063e7b1d15450e56ab8099599d36dc9def38",
+      "quantity": "325000000"
+    },
+    {
+      "asset_name": "8dcd6a085095df3ee06732d1c418cdbea79c584b07b25fce5d380a605a58d3f3",
+      "decimals": 0,
+      "fingerprint": "asset1rcjluq7dm2ymc3q356y07u7swe2jl0tqvj634r",
+      "policy_id": "fbe6323c95bd40c0f541063e7b1d15450e56ab8099599d36dc9def38",
+      "quantity": "9000000000"
+    }
+  ],
+  "block_height": 8172498,
+  "block_time": 1755016256,
+  "datum_hash": "f6653359466028c80af0c39d888b41732aa1f2291207a60e1708777014d5df12",
+  "epoch_no": 575,
+  "inline_datum": {
+    "bytes": "d8799fd8799f581c167bb3e2fa586ce6808490f5b70b29c5c187c3d232f1743b2465cb50ff1a017d78409f010203ff476f726465722d61ff",
+    "value": {
+      "constructor": 0,
+      "fields": [
+        {
+          "constructor": 0,
+          "fields": [
+            {
+              "bytes": "167bb3e2fa586ce6808490f5b70b29c5c187c3d232f1743b2465cb50"
+            }
+          ]
+        },
+        {
+          "int": 25000000
+        },
+        {
+          "list": [
+            {
+              "int": 1
+            },
+            {
+              "int": 2
+            },
+            {
+              "int": 3
+            }
+          ]
+        },
+        {
+          "bytes": "6f726465722d61"
+        }
+      ]
+    }
+  },
+  "is_spent": true,
+  "payment_cred": "c7a9aec9ef09ac24378709edba99eea93072c61aa2ae27c4ed82bac3",
+  "reference_script": null,
+  "stake_address": "stake1uyt07e4aahq6lt5y89k8u4j9l6vcxsz2aruckrec9lur2vcgc7zc0",
+  "tx_hash": "cb2acdcf5cd8a5399adbcd69fba542bf917c8f86c64c50f118b25a27fd31266f",
+  "tx_index": 3,
+  "value": "36000000"
+}

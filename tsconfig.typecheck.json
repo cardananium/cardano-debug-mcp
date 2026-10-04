@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@cardananium/de-uplc-core": ["./src/types/de-uplc-core.d.ts"]
+    }
+  }
+}

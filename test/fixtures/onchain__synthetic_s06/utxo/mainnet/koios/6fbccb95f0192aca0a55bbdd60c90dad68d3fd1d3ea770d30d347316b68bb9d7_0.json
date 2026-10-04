@@ -1,0 +1,41 @@
+{
+  "address": "addr1z864q0r9y6r50e8r0vg8vzgna6pata0trp5smrqju0da9hcklantmmwp47hggwtv0etytl5esdqy468e3v8nstlcx5esl954r6",
+  "asset_list": [
+    {
+      "asset_name": "50414952",
+      "decimals": 0,
+      "fingerprint": "asset1e25387ux826xlrh3xnlj0vtgt8n3zdlccfgn6h",
+      "policy_id": "9a04230d01332c44b88d1252e947900aec54a9cac23abe9ff0f0ba29",
+      "quantity": "1"
+    }
+  ],
+  "block_height": 8172498,
+  "block_time": 1755016256,
+  "datum_hash": "0be654c6df319203c27158ea0b031fa10de6b7354b237e0aae62f19745e9aed4",
+  "epoch_no": 575,
+  "inline_datum": {
+    "bytes": "d8799f07476f726465722d62d87a80ff",
+    "value": {
+      "constructor": 0,
+      "fields": [
+        {
+          "int": 7
+        },
+        {
+          "bytes": "6f726465722d62"
+        },
+        {
+          "constructor": 1,
+          "fields": []
+        }
+      ]
+    }
+  },
+  "is_spent": true,
+  "payment_cred": "f5503c65268747e4e37b10760913ee83d5f5eb18690d8c12e3dbd2df",
+  "reference_script": null,
+  "stake_address": "stake1uyt07e4aahq6lt5y89k8u4j9l6vcxsz2aruckrec9lur2vcgc7zc0",
+  "tx_hash": "6fbccb95f0192aca0a55bbdd60c90dad68d3fd1d3ea770d30d347316b68bb9d7",
+  "tx_index": 0,
+  "value": "12000000"
+}

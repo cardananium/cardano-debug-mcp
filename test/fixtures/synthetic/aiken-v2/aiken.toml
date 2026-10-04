@@ -1,0 +1,11 @@
+name = "synthetic/aiken-v2"
+version = "0.0.0"
+compiler = "v1.0.29-alpha"
+plutus = "v2"
+license = "Apache-2.0"
+description = "Artificial Plutus V2 scripts for the cardano-debug-mcp test fixtures"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "1.9.0"
+source = "github"

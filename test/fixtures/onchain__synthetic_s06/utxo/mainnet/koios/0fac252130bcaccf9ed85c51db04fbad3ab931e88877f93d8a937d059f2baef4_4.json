@@ -1,0 +1,16 @@
+{
+  "address": "addr1qyt8hvlzlfvxee5qsjg0tdct98zurp7r6ge0zapmy3juk5qklantmmwp47hggwtv0etytl5esdqy468e3v8nstlcx5es4htsnx",
+  "asset_list": [],
+  "block_height": 8172498,
+  "block_time": 1755016256,
+  "datum_hash": null,
+  "epoch_no": 575,
+  "inline_datum": null,
+  "is_spent": true,
+  "payment_cred": "167bb3e2fa586ce6808490f5b70b29c5c187c3d232f1743b2465cb50",
+  "reference_script": null,
+  "stake_address": "stake1uyt07e4aahq6lt5y89k8u4j9l6vcxsz2aruckrec9lur2vcgc7zc0",
+  "tx_hash": "0fac252130bcaccf9ed85c51db04fbad3ab931e88877f93d8a937d059f2baef4",
+  "tx_index": 4,
+  "value": "200000000"
+}

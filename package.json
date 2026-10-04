@@ -1,0 +1,59 @@
+{
+  "name": "@cardananium/cardano-debug-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for inspecting, validating and step-debugging Cardano transactions and Plutus scripts (cquisitor-lib + de-uplc engine + dehosk decompiler).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "cardano-debug-mcp": "./dist/server.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build:deps": "git submodule update --init deps/de-uplc-web && npm --prefix deps/de-uplc-web run build:wasm && npm --prefix deps/de-uplc-web run build:decompiler-wasm",
+    "build": "tsup",
+    "dev": "tsx src/server.ts",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "pretest:unit": "npm run build",
+    "test:unit": "vitest run test/unit",
+    "pretest:e2e": "npm run build",
+    "test:e2e": "vitest run test/e2e",
+    "fixtures:build": "tsx test/fixtures/synthetic/build.ts",
+    "fixtures:check": "tsx test/fixtures/synthetic/build.ts --check",
+    "fixtures:compile": "tsx test/fixtures/synthetic/compile.ts",
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:dev": "node scripts/smoke.mjs --dev"
+  },
+  "dependencies": {
+    "@cardananium/cquisitor-lib": "0.1.0-beta.66",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "bech32": "^2.0.0",
+    "safe-stable-stringify": "^2.5.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cardananium/de-uplc-core": "file:./deps/de-uplc-web/packages/core",
+    "@cardananium/de-uplc-decompiler-wasm": "file:./deps/de-uplc-web/packages/decompiler-wasm",
+    "@cardananium/de-uplc-engine-wasm": "file:./deps/de-uplc-web/packages/engine-wasm",
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.28.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "esbuild": "$esbuild"
+  }
+}

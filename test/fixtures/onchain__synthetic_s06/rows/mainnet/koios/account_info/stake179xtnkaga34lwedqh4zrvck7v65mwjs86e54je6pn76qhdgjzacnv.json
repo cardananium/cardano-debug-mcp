@@ -1,0 +1,15 @@
+{
+  "delegated_drep": null,
+  "delegated_pool": null,
+  "deposit": "2000000",
+  "proposal_refund": "0",
+  "reserves": "0",
+  "rewards": "0",
+  "rewards_available": "0",
+  "stake_address": "stake179xtnkaga34lwedqh4zrvck7v65mwjs86e54je6pn76qhdgjzacnv",
+  "status": "registered",
+  "total_balance": "6400000",
+  "treasury": "0",
+  "utxo": "6400000",
+  "withdrawals": "0"
+}

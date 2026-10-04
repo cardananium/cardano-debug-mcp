@@ -1,0 +1,17 @@
+[
+  {
+    "circulation": "30000000000000000",
+    "deposits_drep": "400000000000",
+    "deposits_proposal": "100000000000",
+    "deposits_stake": "4000000000000",
+    "epoch_no": 575,
+    "fees": "50000000000",
+    "reserves": "6000000000000000",
+    "reserves_withdrawal": "0",
+    "reward": "700000000000000",
+    "supply": "36000000000000000",
+    "treasury": "1620000000000000",
+    "treasury_donation": "0",
+    "treasury_withdrawal": "0"
+  }
+]
