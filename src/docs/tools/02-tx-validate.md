@@ -11,3 +11,4 @@ gist: what tx_validate checks per phase, its caching, the shape and caps of its 
 - `phase2.redeemers` lists at most 20 rows, failing first; `redeemers_total` and `failed_count` count them all (`redeemers_truncated`). One redeemer: tx_redeemer; all of them: tx_inspect(section='redeemers').
 - The defaults of the chain state are tx_load's `defaults_applied`: here only `defaults_applied_count` (the full list when this call loaded the chain state itself, e.g. from tx_cbor).
 - Engine semantics (protocol-aware builtins and costs; no array builtins yet) are in uplc-cek/budget and `semantics` of cardano-debug://server/info, not repeated per answer. `resources` lists validation.json (and necessary.json when incomplete).
+- `show_it` (a failing verdict): the ready `ui_link` call that shows the user where the transaction breaks; make it unasked (`open=true` opens it for a user at the keyboard).

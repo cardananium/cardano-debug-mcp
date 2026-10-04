@@ -22,7 +22,7 @@ import {
   sessionErrorResult,
   shapePosition,
 } from "./_debug.js";
-import { clampInt, fail, ok, type ToolResult } from "./_shared.js";
+import { clampInt, fail, ok, showIt, type ToolResult } from "./_shared.js";
 import { TOOL_TEXT } from "./descriptions.js";
 
 const T = TOOL_TEXT.debug_run;
@@ -311,6 +311,7 @@ async function runSession(ctx: AppContext, record: SessionRecord, args: Args, si
   };
   if (report.error_message !== undefined) body.error_message = report.error_message;
   if (report.stopped.kind === "error") {
+    body.show_it = showIt("debug", record.dbgId);
     if (report.error_at) {
       // stop_before: the machine stands one transition before the failure, with its state in this reply.
       body.error_at = shapePosition(report.error_at);

@@ -40,13 +40,14 @@ export const FORCE_EXIT_MS = 5_000;
 // (test/unit/modelTexts.test.ts). Facts live in the docs (src/docs, docs tool, cardano-debug://docs).
 export const SERVER_INSTRUCTIONS = [
   "cardano-debug: inspect, validate and step-debug Cardano transactions and Plutus scripts.",
-  "Why a tx fails: tx_load (tx_cbor | tx_hash | bundle; keep tx_id) -> tx_validate -> tx_redeemer (part='error', 'traces') -> script_decompile(tx_id, script_hash) FIRST to read the logic -> debug_open(tx_id, redeemer) -> debug_profile / debug_run(until='error') -> the report's `rewind` call -> debug_inspect / debug_source.",
-  "tx_inspect = what a tx does; tx_add_witnesses = sign and revalidate; bundle_export = offline replay; ui_link = an annotated cquisitor / de-uplc-web link for the user (open=true opens it); before the first one read docs(topic='debug-playbook', section='show-it-in-a-ui').",
+  "Why a tx fails: tx_load (tx_cbor | tx_hash | bundle; keep tx_id) -> tx_validate -> tx_redeemer (part='error', 'traces') -> script_decompile(tx_id, script_hash) FIRST to read the logic -> debug_open(tx_id, redeemer) -> debug_run(until='error', stop_before=true) -> debug_inspect / debug_source (debug_profile for costs).",
+  "tx_inspect = what a tx does; tx_add_witnesses = sign and revalidate; bundle_export = offline replay.",
+  "Once you know why a tx, script or bytes fail, SHOW it unasked: ui_link(open=true) opens cquisitor / de-uplc-web at the decisive spot (failing answers carry the call in `show_it`); the user may not know it exists: say what opened. For someone else, give the URL. Read docs(topic='debug-playbook', section='show-it-in-a-ui') first.",
   "Bytes: cbor_decode(hex) = what they are; cbor_validate(hex, cddl=<era preset | schema>, rule?) = where they break a schema; cddl_check = is a schema usable.",
   "A script alone: script_decompile(script), debug_open(script, …), script_locate.",
-  "Read docs before guessing: docs(error=<Name>) for any error or warning name; debug-playbook for the procedure, handles and {term_id, uplc_line} positions; tx-anatomy for fees, collateral, datums and redeemer refs <purpose>:<index>; script-context for script arguments and TxInfo; uplc-cek for machine states, frames, builtins; cbor-cddl for bytes and schemas; tools for a tool's details: docs(topic='tools', section=<tool name>).",
-  "expired_handle: re-run the tool its recreate_with names. Quantities and decoded integers are decimal strings.",
-  "Page (offset/limit), zoom (path/depth), read cardano-debug:// resources; avoid dumps.",
+  "Read docs before guessing: docs(error=<Name>) for an error name; debug-playbook (procedure, handles, {term_id, uplc_line}), tx-anatomy (fees, collateral, datums, redeemer refs <purpose>:<index>), script-context (script arguments, TxInfo), uplc-cek (machine, builtins), cbor-cddl (bytes, schemas), tools (a tool's details: docs(topic='tools', section=<tool name>)).",
+  "expired_handle: re-run the tool in recreate_with. Integers are decimal strings.",
+  "Page (offset/limit), zoom (path/depth), read cardano-debug:// resources.",
 ].join(" ");
 
 /** Build a server bound to `ctx`. Cheap and side-effect free (serveStdio may call it twice). */

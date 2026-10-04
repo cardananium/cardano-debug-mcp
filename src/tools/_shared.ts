@@ -55,6 +55,22 @@ export interface OkOptions {
   links?: ResourceLink[];
 }
 
+/**
+ * A ready ui_link call that shows the user a failure on the spot. The user usually does not know that cquisitor / de-uplc-web can be
+ * opened with the decisive spot highlighted, so the failing answers carry the call (`show_it`); `open=true` opens it for a user who
+ * is at the keyboard (an answer for someone else gets the URL instead: docs debug-playbook/show-it-in-a-ui).
+ */
+export function showIt(kind: "tx" | "debug" | "cbor", ref?: string): string {
+  switch (kind) {
+    case "tx":
+      return `Show the user where it breaks, unasked: ui_link(app='cquisitor', tx_id='${ref}', from=['validation'], open=true). For a failing script, find the cause with debug_run(until='error', stop_before=true) and then open ui_link(app='de_uplc', dbg_id=…, from=['session'], open=true).`;
+    case "debug":
+      return `Open the failing term for the user, unasked: ui_link(app='de_uplc', dbg_id='${ref}', from=['session'], open=true); say what opened.`;
+    case "cbor":
+      return "Show the user the byte, unasked: ui_link(app='cquisitor', cbor=<the same bytes>, cddl / preset and rule as here, from=['cbor_errors'], open=true); say what opened.";
+  }
+}
+
 /** Successful result: `text` is the compact JSON of `structuredContent` (wire-normalised). */
 export function ok(structured: Record<string, unknown>, options: OkOptions = {}): ToolResult {
   const links = (options.links ?? []).filter((link, i, all) => all.findIndex((other) => other.uri === link.uri) === i);

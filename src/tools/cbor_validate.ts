@@ -23,7 +23,7 @@ import { runValidation, type ValidationRun } from "../cbor/validate.js";
 import type { AppContext, ToolModule } from "../context.js";
 import { integersAsStrings } from "../tx/dataView.js";
 import { describeTextInput, inputNotes } from "./cbor_decode.js";
-import { childKeys, clampInt, fail, failFromError, lookupPath, normalizeBytesInput, ok, parsePath, resourceLink, truncateArray, type ResourceLink, type ToolResult } from "./_shared.js";
+import { childKeys, clampInt, fail, failFromError, lookupPath, normalizeBytesInput, ok, parsePath, resourceLink, showIt, truncateArray, type ResourceLink, type ToolResult } from "./_shared.js";
 import { TOOL_TEXT } from "./descriptions.js";
 
 const T = TOOL_TEXT.cbor_validate;
@@ -255,7 +255,7 @@ export async function cborValidate(ctx: AppContext, args: CborValidateArgs): Pro
           ...base,
           schema: schemaBlock(info, rule ? { rule, candidates: [], result: null, auto: false, admitted: 0, untried: 0 } : null),
           valid: unexamined ? null : false,
-          ...(unexamined ? { unexamined: { kind: raw.error.kind, message: raw.error.message } } : {}),
+          ...(unexamined ? { unexamined: { kind: raw.error.kind, message: raw.error.message } } : { show_it: showIt("cbor") }),
           verdict: unexamined
             ? `Not examined: the decoder stopped at its nesting limit${at} — the bytes were not judged invalid.`
             : `The bytes are not well-formed CBOR: ${raw.error.kind}${at} — ${raw.error.message}${structural.partial_summary ? ` (decoded so far: ${structural.partial_summary})` : ""}.`,
@@ -372,6 +372,7 @@ export async function cborValidate(ctx: AppContext, args: CborValidateArgs): Pro
         ...common,
         valid: false,
         verdict: mismatchVerdict(run.rule, head, shaped.errors.length, shaped.additional_count),
+        show_it: showIt("cbor"),
         errors: shaped.errors,
         additional_count: shaped.additional_count,
         ...oddOut,
