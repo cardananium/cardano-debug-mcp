@@ -15,6 +15,21 @@ Under the hood:
 - [de-uplc](https://github.com/cardananium/de-uplc-web): the UPLC step debugger
 - [dehosk](https://github.com/cardananium/dehosk): the UPLC → pseudocode decompiler
 
+## Quick start
+
+Needs Node ≥ 20. Install from npm and register the server with Claude Code:
+
+```sh
+npm install -g @cardananium/cardano-debug-mcp
+claude mcp add --scope user cardano-debug -- cardano-debug-mcp
+```
+
+Start a new Claude Code session and ask, for example, "why does this transaction fail?" with the
+transaction CBOR or its hash. Loading a transaction by hash uses the public Koios API, which is rate
+limited: for regular use add a Koios API key or a Blockfrost project id (see
+[Add it to Claude Code](#add-it-to-claude-code)). Details, other MCP clients and building from source
+are under [Install](#install).
+
 ## What you can ask
 
 These are starting points, not a fixed list. The tools share handles (`tx_id`, `dbg_id`) and one
@@ -44,6 +59,19 @@ You can also steer it mid-way ("stop at the first `lessThanInteger`", "why is th
 "what would pass?").
 
 ## Install
+
+Two ways: from npm (nothing to build) or from source.
+
+### From npm
+
+Requires Node ≥ 20.
+
+```sh
+npm install -g @cardananium/cardano-debug-mcp
+cardano-debug-mcp --check   # verifies the install, exit code 0 = fine
+```
+
+### From source
 
 Requirements:
 
@@ -77,13 +105,25 @@ path). Windows is only supported through WSL2.
 
 ## Add it to Claude Code
 
+With the npm install:
+
+```sh
+claude mcp add --scope user cardano-debug -- cardano-debug-mcp
+# without installing it first (fetched on the first start, which then takes longer):
+claude mcp add --scope user cardano-debug -- npx -y @cardananium/cardano-debug-mcp
+```
+
+From a source checkout:
+
 ```sh
 claude mcp add --scope user cardano-debug -- node /path/to/cardano-debug-mcp/dist/server.js
 ```
 
-Use an absolute path. `--scope user` makes the server available in every project. Without it Claude
+Use an absolute path for a source checkout. `--scope user` makes the server available in every project. Without it Claude
 Code adds it to the current project only (`local` scope, kept in `~/.claude.json`);
 `--scope project` writes a `.mcp.json` that you can commit.
+
+In the commands below, replace `node /path/to/cardano-debug-mcp/dist/server.js` by `cardano-debug-mcp` for the npm install.
 
 The public Koios API works without a key but is rate limited: loading several transactions by hash
 in a row, or a large one, can hit the limit (the server then answers `rate_limited` and says what to
@@ -96,7 +136,7 @@ claude mcp add --scope user --env KOIOS_API_KEY=... cardano-debug -- node /path/
 claude mcp add --scope user --env BLOCKFROST_PROJECT_ID_MAINNET=... --env CARDANO_DEBUG_PROVIDER=blockfrost cardano-debug -- node /path/to/cardano-debug-mcp/dist/server.js
 ```
 
-Or in `.mcp.json`:
+Or in `.mcp.json` (for the npm install use `"command": "cardano-debug-mcp"` and drop `args`):
 
 ```json
 {
@@ -241,7 +281,7 @@ after a provider error.
   `claude --debug` to see the messages of MCP servers, or run `node dist/server.js` in a terminal to
   see its start-up messages (it then waits for JSON-RPC on stdin; press Ctrl-D to quit).
 - **The server does not connect.** `claude mcp list` or `/mcp` in Claude Code shows its status. Run
-  `node /path/to/cardano-debug-mcp/dist/server.js --check`: it verifies the Node version, the build
+  `cardano-debug-mcp --check` (from source: `node /path/to/cardano-debug-mcp/dist/server.js --check`): it verifies the Node version, the build
   files and wasm, the cache directory, the provider configuration and that the library worker starts,
   prints one line each, and exits 1 on any failure. A missing or stale `dist/` (after `git pull`, or
   a build that stopped half way) is fixed by `npm run build:deps && npm run build`. The server itself
@@ -264,6 +304,15 @@ after a provider error.
 
 ## Update
 
+From npm:
+
+```sh
+npm update -g @cardananium/cardano-debug-mcp
+cardano-debug-mcp --check
+```
+
+From source:
+
 ```sh
 git pull
 git submodule update --init
@@ -273,17 +322,18 @@ npm run build
 node dist/server.js --check
 ```
 
-Then restart Claude Code. `npm run build` empties `dist/` first: close Claude Code sessions that use
-this checkout before building.
+Then restart Claude Code. (From source, `npm run build` empties `dist/` first: close Claude Code sessions that use
+this checkout before building.)
 
 ## Uninstall
 
 ```sh
 claude mcp remove cardano-debug              # add --scope user if you added it with that scope
 rm -rf ~/.cache/cardano-debug-mcp            # the chain data cache (or your CARDANO_DEBUG_CACHE_DIR)
+npm uninstall -g @cardananium/cardano-debug-mcp   # if you installed it from npm
 ```
 
-Then delete the cloned repository.
+For a source install, delete the cloned repository.
 
 ## How it works
 

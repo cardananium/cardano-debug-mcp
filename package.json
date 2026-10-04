@@ -3,19 +3,42 @@
   "version": "0.1.0",
   "description": "MCP server for inspecting, validating and step-debugging Cardano transactions and Plutus scripts (cquisitor-lib + de-uplc engine + dehosk decompiler).",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cardananium/cardano-debug-mcp.git"
+  },
+  "homepage": "https://github.com/cardananium/cardano-debug-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/cardananium/cardano-debug-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cardano",
+    "plutus",
+    "uplc",
+    "debugger",
+    "decompiler",
+    "cbor",
+    "cddl",
+    "claude"
+  ],
   "type": "module",
-  "private": true,
   "bin": {
-    "cardano-debug-mcp": "./dist/server.js"
+    "cardano-debug-mcp": "dist/server.js"
   },
   "files": [
     "dist",
+    "!dist/**/*.map",
     "README.md",
     "LICENSE",
     "NOTICE"
   ],
   "engines": {
     "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build:deps": "git submodule update --init deps/de-uplc-web && npm --prefix deps/de-uplc-web run build:wasm && npm --prefix deps/de-uplc-web run build:decompiler-wasm",
@@ -32,7 +55,8 @@
     "fixtures:check": "tsx test/fixtures/synthetic/build.ts --check",
     "fixtures:compile": "tsx test/fixtures/synthetic/compile.ts",
     "smoke": "node scripts/smoke.mjs",
-    "smoke:dev": "node scripts/smoke.mjs --dev"
+    "smoke:dev": "node scripts/smoke.mjs --dev",
+    "prepublishOnly": "npm run typecheck && npm run build && node scripts/smoke.mjs"
   },
   "dependencies": {
     "@cardananium/cquisitor-lib": "0.1.0-beta.66",
