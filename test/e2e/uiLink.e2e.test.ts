@@ -149,6 +149,32 @@ describe("ui_link over stdio (offline bundle)", () => {
     expect(client.stderr.join("")).toMatch(/test-hook open: \d+ chars/);
   });
 
+  it("de_uplc from='profile': the hottest terms of the session's debug_profile, by dbg_id and by tx_id + redeemer", async () => {
+    const opened = (await client.callTool<Json>("debug_open", { tx_id: failingTx, redeemer: "spend:2" }, 120_000)).structuredContent!;
+    const before = await call({ app: "de_uplc", dbg_id: opened.dbg_id, from: ["profile"] });
+    expect(before.annotations_count).toBe(0);
+    expect(before.notes.join("\n")).toMatch(/run debug_profile on this session first/);
+
+    const profile = (await client.callTool<Json>("debug_profile", { dbg_id: opened.dbg_id, top: 3 }, 180_000)).structuredContent!;
+    // every builtin that ran sits in one of the buckets
+    expect(profile.builtin_groups.length).toBeGreaterThan(0);
+    expect(profile.builtin_groups.reduce((sum: number, g: Json) => sum + g.cpu_pct, 0)).toBeCloseTo(100, 0);
+    expect(profile.builtins_total.cpu_pct_of_spent).toBeGreaterThan(0);
+    expect(profile.show_it).toContain(`dbg_id='${opened.dbg_id}', from=['profile']`);
+    // the script fails: the validator drops the machine steps it had not charged yet, so the totals differ and the answer says why
+    expect(profile).toMatchObject({ outcome: "error", parity: { match: false, note: expect.stringMatching(/failing run/) } });
+    const hot = (profile.hot_terms as Json[]).map((t, i) => ({ rank: i + 1, term_id: t.term_id as number | null, pct: t.pct as number })).filter((t) => t.term_id !== null);
+    expect(hot.length).toBeGreaterThan(0);
+
+    const expected = hot.map((t) => ({ target: { kind: "term", term_id: t.term_id }, label: `hot #${t.rank}: ${t.pct}% of cpu` }));
+    const bySession = deUplcPayload(await fullUrl(await call({ app: "de_uplc", dbg_id: opened.dbg_id, from: ["profile"] }))).ann as Json[];
+    expect(bySession.map(({ target, label }) => ({ target, label }))).toEqual(expected);
+    expect(bySession[0]!.hint).toMatch(/\w+: \d+ hits, self cpu \d+, with callees \d+/);
+    // the same terms through the tx and redeemer the session was opened for
+    const byTx = deUplcPayload(await fullUrl(await call({ app: "de_uplc", tx_id: failingTx, redeemer: "spend:2", from: ["profile"] }))).ann as Json[];
+    expect(byTx.map(({ target, label }) => ({ target, label }))).toEqual(expected);
+  });
+
   it("decompiler: tx_id + redeemer with pseudocode-line targets carries the decompile options script_decompile uses", async () => {
     const body = await call({
       app: "decompiler",

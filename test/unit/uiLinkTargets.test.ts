@@ -318,6 +318,35 @@ describe("ui_link CBOR / CDDL tabs and sessions", () => {
       expect((await call({ app: "de_uplc", dbg_id: never, from: ["session"] })).notes.join("\n")).toMatch(/has not stopped on an error/);
     });
 
+    it("from='profile': the hottest terms of the session's last debug_profile, ranked, the first a warning when over budget", async () => {
+      const dbg = open({}, report("ready", 1, null));
+      const hot = (id: number | null, line: number | null, pct: number) => ({ term_id: id, kind: "Apply", uplc_line: line, hits: "6", self_cpu: "2974014", total_cpu: "3627174", pct });
+      ctx.sessions.get(dbg)!.extra.profileHot = {
+        outcome: "done",
+        over_budget: true,
+        terms: [hot(2, 4, 9.11), hot(null, null, 8), hot(3, null, 7), hot(4, 5, 6), hot(5, 6, 5), hot(6, 7, 4), hot(7, 8, 3)],
+      };
+      const body = await call({ app: "de_uplc", dbg_id: dbg, from: ["profile"] });
+      expect(body).toMatchObject({ annotations_count: 5, dropped: [] });
+      const ann = deUplcPayload(await fullUrl(body)).ann as Json[];
+      expect(ann[0]).toEqual({ target: { kind: "term", term_id: 2 }, label: "hot #1: 9.11% of cpu", severity: "warning", hint: "Apply: 6 hits, self cpu 2974014, with callees 3627174" });
+      // a term the report could not place is skipped, the ranks keep their places
+      expect(ann.map((a) => a.label)).toEqual(["hot #1: 9.11% of cpu", "hot #3: 7% of cpu", "hot #4: 6% of cpu", "hot #5: 5% of cpu", "hot #6: 4% of cpu"]);
+      expect(ann[1]!.severity).toBe("info");
+    });
+
+    it("from='profile' before any profile says what to run; a partial run says so; a bare script explains", async () => {
+      const dbg = open({}, report("ready", 1, null));
+      const none = await call({ app: "de_uplc", dbg_id: dbg, from: ["profile"] });
+      expect(none.annotations_count).toBe(0);
+      expect(none.notes.join("\n")).toMatch(/run debug_profile on this session first/);
+      ctx.sessions.get(dbg)!.extra.profileHot = { outcome: "limit", over_budget: false, terms: [{ term_id: 2, kind: "Apply", uplc_line: 4, hits: "1", self_cpu: "5", total_cpu: "9", pct: 1 }] };
+      const partial = await call({ app: "de_uplc", dbg_id: dbg, from: ["profile"] });
+      expect(partial.annotations_count).toBe(1);
+      expect(partial.notes.join("\n")).toMatch(/ended 'limit': the shares are partial/);
+      expect((await call({ app: "de_uplc", script: REF_SCRIPT, from: ["profile"] })).notes.join("\n")).toMatch(/from='profile' needs dbg_id/);
+    });
+
     it("term and uplc_line targets are checked against the session's program", async () => {
       const dbg = open({}, report("ready", 1, null));
       const body = await call({

@@ -287,7 +287,7 @@ export const TOOL_TEXT = {
       rule: "CDDL root rule (default: as cbor_validate picks).",
       preset: "The app's own era schema instead of cddl (no cddl_range).",
       annotations: "[{target, label?, hint?, severity?}]; targets are checked against the bytes / tx / session: rejected ones come back in dropped.",
-      from: "Generate annotations: validation (tx_id errors), cbor_errors (cbor_validate rows), session (dbg_id failing term + position).",
+      from: "Generate annotations: validation (tx_id errors), cbor_errors (cbor_validate rows), session (dbg_id failing term + position), profile (the hottest terms of the session's last debug_profile).",
       focus: "Annotation shown first (yours, then generated).",
       open: "Open in the user's browser (default false): true when showing it to the user, not for a link to share.",
       decompile_options: "script_decompile options, so pseudo_line targets match its lines.",

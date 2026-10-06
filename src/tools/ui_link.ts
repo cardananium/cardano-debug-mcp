@@ -28,7 +28,7 @@ import { expiredHandleError, type SessionRecord } from "../store/sessionRegistry
 import type { TxRecord } from "../store/txStore.js";
 import { lookupTxRecord } from "../tx/record.js";
 import { checkAnnotations, type AnyAnnotation, type TargetResolver, type UiApp } from "../ui/annotations.js";
-import { AUTO_MAX, cborErrorAnnotations, errorTermOfSession, failingTermAnnotation, failureOfRedeemer, noFailingTermNote, positionTerm, termAnnotation, validationAnnotations, type FailingTerm } from "../ui/autoAnnotations.js";
+import { AUTO_MAX, cborErrorAnnotations, errorTermOfSession, failingTermAnnotation, failureOfRedeemer, noFailingTermNote, positionTerm, profileAnnotations, profileOfRedeemer, profileOfSession, termAnnotation, validationAnnotations, type FailingTerm } from "../ui/autoAnnotations.js";
 import { linkResourceUri, uiLinkStore, writeLinkFile } from "../ui/linkStore.js";
 import { openUrl } from "../ui/opener.js";
 import { cborTargetResolver, loadTree, ownKinds, programTargetResolver, pseudocodeTargetResolver, txTargetResolver, type ProgramShape } from "../ui/targets.js";
@@ -46,7 +46,7 @@ const T = TOOL_TEXT.ui_link;
 
 export const UI_APPS = ["cquisitor", "de_uplc", "decompiler"] as const;
 export const UI_TABS = ["transaction-validator", "cardano-cbor", "general-cbor", "cddl-validator"] as const;
-export const FROM_SOURCES = ["validation", "cbor_errors", "session"] as const;
+export const FROM_SOURCES = ["validation", "cbor_errors", "session", "profile"] as const;
 type FromSource = (typeof FROM_SOURCES)[number];
 
 /** Keys script_decompile's `options` accepts. */
@@ -167,7 +167,7 @@ async function cquisitorLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSo
       record = await lookupTxRecord(ctx, args.tx_id);
       if (!record) return expiredHandleError(args.tx_id.trim(), "tx_load");
     }
-    otherFrom(["cbor_errors", "session"]);
+    otherFrom(["cbor_errors", "session", "profile"]);
     const rec = record;
     return {
       tab,
@@ -215,7 +215,7 @@ async function cquisitorLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSo
 
   if (tab === "cardano-cbor") {
     if (args.cddl !== undefined || args.preset !== undefined || args.rule !== undefined) return invalid("cddl / rule / preset belong to the cddl-validator tab.", "tab");
-    otherFrom(["validation", "cbor_errors", "session"]);
+    otherFrom(["validation", "cbor_errors", "session", "profile"]);
     if (!network) notes.push("network not given: the bytes are tagged mainnet (pass network for preprod / preview)");
     const net = network ?? "mainnet";
     const type = fromTx ? "Transaction" : undefined;
@@ -244,7 +244,7 @@ async function cquisitorLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSo
       if (structural) generated.push(...structuralAnnotations(structural));
       else notes.push("from='cbor_errors': the bytes are well-formed CBOR; schema mismatches need the cddl-validator tab (pass cddl / rule / preset)");
     }
-    otherFrom(["validation", "session"]);
+    otherFrom(["validation", "session", "profile"]);
     return generalCbor();
   }
 
@@ -286,7 +286,7 @@ async function cquisitorLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSo
       // no rule applies to bytes that are not CBOR: the general tab shows the structural error
       notes.push("the bytes are not well-formed CBOR, so no schema rule applies: this link opens the general-cbor tab (give rule to keep the cddl-validator tab)");
       if (from.has("cbor_errors")) generated.push(...structuralAnnotations(structural));
-      otherFrom(["validation", "session"], "general-cbor");
+      otherFrom(["validation", "session", "profile"], "general-cbor");
       return generalCbor();
     }
     if (from.has("cbor_errors")) {
@@ -299,7 +299,7 @@ async function cquisitorLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSo
     }
   }
   if (!rule) return invalid("No root rule admits these bytes: pass rule (cddl_check lists the roots of the schema).", "rule");
-  otherFrom(["validation", "session"]);
+  otherFrom(["validation", "session", "profile"]);
   const finalRule = rule;
   return {
     tab,
@@ -412,6 +412,11 @@ async function deUplcLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSourc
       if (known?.failing) generated.push(failingTermAnnotation(known.failing, target.ref, ev.error, ev.logs?.at(-1)));
       else notes.push(ev.success ? `${target.ref} succeeded: no failing term to annotate` : noFailingTermNote(known?.withoutTerm ?? false));
     }
+    if (from.has("profile")) {
+      const hot = profileOfRedeemer(ctx.sessions, record.txId, target.ref);
+      if (hot) generated.push(...profileAnnotations(hot));
+      else notes.push(`from='profile': no profile of ${target.ref} yet: debug_open + debug_profile, then call ui_link again (or use dbg_id)`);
+    }
     shape = programShape(ctx, { txId: record.txId, redeemer: target.ref });
   } else if (args.dbg_id) {
     const session = ctx.sessions.get(args.dbg_id.trim());
@@ -426,6 +431,13 @@ async function deUplcLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSourc
       generated.push(...auto.annotations);
       notes.push(...auto.notes);
     }
+    if (from.has("profile")) {
+      const hot = profileOfSession(session);
+      if (hot) {
+        generated.push(...profileAnnotations(hot));
+        if (hot.outcome !== "done" && hot.outcome !== "error") notes.push(`from='profile': the profile run ended '${hot.outcome}': the shares are partial`);
+      } else notes.push("from='profile': run debug_profile on this session first");
+    }
     if (from.has("validation")) notes.push("from='validation' needs tx_id + redeemer; with dbg_id use from=['session']");
     shape = programShape(ctx, { session });
   } else {
@@ -434,7 +446,7 @@ async function deUplcLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSourc
     fields = { script: script.script.singleHex, v: versionLower(script.script) };
     notes.push("program-only link: no datum / redeemer / context");
     if (!script.script.versionCertain) notes.push(`the Plutus version is not stated (V1 and V2 scripts look alike): the link says ${fields.v}; pass plutus_version to pin it`);
-    for (const k of from) notes.push(`from='${k}' needs ${k === "session" ? "dbg_id" : "tx_id + redeemer"}`);
+    for (const k of from) notes.push(`from='${k}' needs ${k === "session" || k === "profile" ? "dbg_id" : "tx_id + redeemer"}`);
     shape = programShape(ctx, { script: script.script.singleHex });
   }
   if (from.has("cbor_errors")) notes.push("from='cbor_errors' applies to the cquisitor CBOR / CDDL tabs");

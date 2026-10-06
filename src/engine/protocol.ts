@@ -313,6 +313,9 @@ export interface ProfileReport {
   hot_terms: ProfileHotTerm[];
   hot_lines: Array<{ uplc_line: number; self_cpu: string; self_mem: string; hits: string; pct: number; text: string }>;
   builtins: Array<{ name: string; calls: string; cpu: string; mem: string }>;
+  /** All builtins that ran, bucketed (data decode / equality / list / arith / crypto / control), costliest first. */
+  builtin_groups: Array<{ group: string; title: string; builtins: number; calls: string; cpu: string; mem: string; cpu_pct: number }>;
+  builtins_total: { calls: string; cpu: string; mem: string; cpu_pct_of_spent: number };
   step_kinds: Array<{ kind: string; count: string; cpu: string; mem: string }>;
   timeline: Array<{ step: string; cpu: string; mem: string }>;
   traces: { total: number; dropped: number; items: Array<{ index: number; step: string; message: string; term_id: number | null; uplc_line: number | null }> };

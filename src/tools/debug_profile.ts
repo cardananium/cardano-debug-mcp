@@ -8,7 +8,7 @@ import * as z from "zod/v4";
 import type { AppContext, ToolModule } from "../context.js";
 import type { ProfileOptions } from "../engine/protocol.js";
 import { leaseSessionWait, MAX_MAX_STEPS, MAX_RUN_TIMEOUT_MS, sessionErrorResult, sessionLinks } from "./_debug.js";
-import { clampInt, ok, type ToolResult } from "./_shared.js";
+import { clampInt, ok, showIt, type ToolResult } from "./_shared.js";
 import { TOOL_TEXT } from "./descriptions.js";
 
 const T = TOOL_TEXT.debug_profile;
@@ -49,6 +49,11 @@ export async function debugProfile(ctx: AppContext, args: Args, signal: AbortSig
     };
     const report = await record.client!.profile(options, timeoutMs + 5_000, signal);
     record.extra.profileAvailable = true;
+    record.extra.profileHot = {
+      outcome: report.outcome,
+      over_budget: report.totals.over_budget,
+      terms: report.hot_terms.map((t) => ({ term_id: t.term_id, kind: t.kind, uplc_line: t.uplc_line, hits: t.hits, self_cpu: t.self_cpu, total_cpu: t.total_cpu, pct: t.pct })),
+    };
     const body: Record<string, unknown> = {
       dbg_id: record.dbgId,
       outcome: report.outcome,
@@ -56,6 +61,8 @@ export async function debugProfile(ctx: AppContext, args: Args, signal: AbortSig
       hot_terms: report.hot_terms,
       hot_lines: report.hot_lines,
       builtins: report.builtins,
+      builtin_groups: report.builtin_groups,
+      builtins_total: report.builtins_total,
       step_kinds: report.step_kinds,
       timeline: report.timeline,
       traces: report.traces,
@@ -64,12 +71,15 @@ export async function debugProfile(ctx: AppContext, args: Args, signal: AbortSig
       attribution: "apply_site (a Return step is charged to the apply site it returns into)",
       elapsed_ms: report.elapsed_ms,
       full_report_chars: report.report_chars,
+      show_it: showIt("profile", record.dbgId),
       note: "The profile ran on a separate machine: the session's own position, traces and step counters are unchanged.",
     };
     if (report.error) body.error = report.error;
     if (record.calculatedExUnits && (report.outcome === "done" || report.outcome === "error")) {
       const match = record.calculatedExUnits.steps === report.totals.cpu && record.calculatedExUnits.mem === report.totals.mem;
       body.parity = { validator_calculated: record.calculatedExUnits, profiler_spent: { cpu: report.totals.cpu, mem: report.totals.mem }, match };
+      // The validator's machine charges step costs in batches and drops the unflushed ones when the script fails; the profiler charges every step.
+      if (!match && report.outcome === "error") (body.parity as Record<string, unknown>).note = "a failing run: the validator's figure is lower by the machine-step costs it had not yet charged when the script failed (batched, under 200 steps), the profiler charges every step; successful runs match exactly";
     }
     if (report.outcome === "limit") body.hint = `the run stopped at max_steps (${options.max_steps.toLocaleString("en-US")}); totals are partial — raise max_steps`;
     if (report.outcome === "timeout") body.hint = `the run stopped at the ${timeoutMs} ms budget; totals are partial — raise timeout_ms or max_steps`;

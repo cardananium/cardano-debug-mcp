@@ -49,6 +49,7 @@ import type {
   UplcWindow,
 } from "./protocol.js";
 import { builtinKey, closeBuiltinNames, PLUTUS_BUILTINS } from "./builtins.js";
+import { groupBuiltins } from "./builtinGroups.js";
 import { ScriptIndex } from "./termIndex.js";
 
 /** The two constructors of the engine glue this module needs (keeps tests free to pass a stub). */
@@ -1391,6 +1392,8 @@ export class EngineSession {
         const text = first ? this.script.oneLiner(first.raw_id, 120) : (this.script.lines[line - 1] ?? "").trim();
         return { uplc_line: line, self_cpu: acc.cpu.toString(), self_mem: acc.mem.toString(), hits: acc.hits.toString(), pct: pct(acc.cpu, denominator > 0n ? denominator : 1n), text: capString(text, 120) };
       });
+    const allBuiltins = (Array.isArray(report.builtins) ? (report.builtins as Json[]) : []).map((b) => ({ name: String(b.name), calls: big(b.calls), cpu: big(b.cpu), mem: big(b.mem) }));
+    const grouped = groupBuiltins(allBuiltins);
     const builtins = (Array.isArray(report.builtins) ? (report.builtins as Json[]) : [])
       .slice()
       .sort((a, b) => cmpBig(big(b.cpu), big(a.cpu)))
@@ -1414,6 +1417,8 @@ export class EngineSession {
       hot_terms: hot,
       hot_lines: hotLines,
       builtins,
+      builtin_groups: grouped.groups.map((g) => ({ group: g.group, title: g.title, builtins: g.builtins, calls: g.calls.toString(), cpu: g.cpu.toString(), mem: g.mem.toString(), cpu_pct: g.cpu_pct })),
+      builtins_total: { calls: grouped.total.calls.toString(), cpu: grouped.total.cpu.toString(), mem: grouped.total.mem.toString(), cpu_pct_of_spent: pct(grouped.total.cpu, cpu > 0n ? cpu : 1n) },
       step_kinds: stepKinds,
       timeline,
       traces,

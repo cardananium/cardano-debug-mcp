@@ -78,6 +78,49 @@ export function redeemerAnnotations(record: TxRecord, ref: string, ev: { tag: st
   return [row, ...diagnosticAnnotations(own, record.decoded)].slice(0, AUTO_MAX);
 }
 
+/** Hot terms of the last debug_profile run of a session, kept for ui_link's from='profile'. */
+export interface ProfileHot {
+  outcome: string;
+  over_budget: boolean;
+  terms: Array<{ term_id: number | null; kind: string | null; uplc_line: number | null; hits: string; self_cpu: string; total_cpu: string; pct: number }>;
+}
+
+/** Hot terms marked per link: the few that explain the cost, not the whole table. */
+export const PROFILE_TERMS = 5;
+
+/** What debug_profile kept on the session, or undefined before the first profile. */
+export function profileOfSession(session: SessionRecord): ProfileHot | undefined {
+  const kept = session.extra.profileHot;
+  return kept !== null && typeof kept === "object" ? (kept as ProfileHot) : undefined;
+}
+
+/** The profile of a session of this tx / redeemer (the first that ran one). */
+export function profileOfRedeemer(sessions: SessionRegistry, txId: string, ref: string): ProfileHot | undefined {
+  for (const session of sessions.list()) {
+    if (session.txId !== txId || session.redeemer !== ref) continue;
+    const kept = profileOfSession(session);
+    if (kept) return kept;
+  }
+  return undefined;
+}
+
+/** The hottest terms of a profile as de-uplc-web annotations: rank and cpu share in the label, the counts in the hint. */
+export function profileAnnotations(hot: ProfileHot): Annotation<DeUplcTarget>[] {
+  const out: Annotation<DeUplcTarget>[] = [];
+  for (const [i, t] of hot.terms.entries()) {
+    if (out.length >= PROFILE_TERMS) break;
+    if (t.term_id === null) continue;
+    // no line number: the app numbers its term view differently from the session's UPLC listing
+    out.push({
+      target: { kind: "term", term_id: t.term_id },
+      label: `hot #${i + 1}: ${t.pct}% of cpu`,
+      hint: clip(`${t.kind ? `${t.kind}: ` : ""}${t.hits} hits, self cpu ${t.self_cpu}, with callees ${t.total_cpu}`, AUTO_HINT_CHARS),
+      severity: i === 0 && hot.over_budget ? "warning" : "info",
+    });
+  }
+  return out;
+}
+
 /** The term a position stands on (the last executed term between terms), or null. */
 export function positionTerm(position: EnginePosition | undefined): number | null {
   if (!position) return null;

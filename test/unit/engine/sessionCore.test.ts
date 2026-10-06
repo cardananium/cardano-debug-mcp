@@ -306,6 +306,12 @@ describe("EngineSession (program mode)", () => {
     expect(report.hot_terms[0]).toMatchObject({ term_id: 8, kind: "Apply", uplc_line: 10 });
     expect(report.hot_terms[0]?.excerpt).toMatch(/^\[ \[ \(builtin addInteger\)/);
     expect(report.builtins.map((b) => b.name).sort()).toEqual(["addInteger", "trace"]);
+    // the buckets cover every builtin that ran: addInteger is arithmetic, trace is control
+    expect(report.builtin_groups.map((g) => g.group).sort()).toEqual(["arith", "control"]);
+    const builtinCpu = report.builtins.reduce((sum, b) => sum + BigInt(b.cpu), 0n);
+    expect(report.builtins_total.cpu).toBe(builtinCpu.toString());
+    expect(report.builtin_groups.reduce((sum, g) => sum + BigInt(g.cpu), 0n)).toBe(builtinCpu);
+    expect(report.builtin_groups.reduce((sum, g) => sum + g.cpu_pct, 0)).toBeCloseTo(100, 1);
     expect(report.traces.items[0]).toMatchObject({ index: 0, message: "hello" });
     expect(report.step_kinds.length).toBeGreaterThan(5);
     expect(report.timeline.length).toBeGreaterThan(0);
