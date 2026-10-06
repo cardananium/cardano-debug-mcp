@@ -24,8 +24,9 @@ npm install -g @cardananium/cardano-debug-mcp
 claude mcp add --scope user cardano-debug -- cardano-debug-mcp
 ```
 
-Start a new Claude Code session and ask, for example, "why does this transaction fail?" with the
-transaction CBOR or its hash. Loading a transaction by hash uses the public Koios API, which is rate
+Using Codex, Cursor, VS Code, Gemini CLI or Claude Desktop instead? See
+[Add it to other MCP clients](#add-it-to-other-mcp-clients). With Claude Code, start a new session
+and ask, for example, "why does this transaction fail?" with the transaction CBOR or its hash. Loading a transaction by hash uses the public Koios API, which is rate
 limited: for regular use add a Koios API key or a Blockfrost project id (see
 [Add it to Claude Code](#add-it-to-claude-code)). Details, other MCP clients and building from source
 are under [Install](#install).
@@ -159,7 +160,77 @@ the environment variables `MCP_TOOL_TIMEOUT` (tool calls) and `MCP_TIMEOUT` (ser
 the defaults.
 
 Start a new Claude Code session, then check with `claude mcp list` or `/mcp` that `cardano-debug`
-is connected. Any other MCP client works the same way: run `node dist/server.js` over stdio.
+is connected. Other clients: the next section.
+
+## Add it to other MCP clients
+
+The server speaks MCP over stdio and takes no arguments, so any client that can start a stdio server
+can use it. The command is `cardano-debug-mcp` (npm install) or
+`node /absolute/path/to/cardano-debug-mcp/dist/server.js` (source checkout); the settings in
+[Configuration](#configuration), such as `KOIOS_API_KEY`, go in the client's `env` for the server.
+The examples use the npm install.
+
+**Codex** (CLI and IDE extension):
+
+```sh
+codex mcp add cardano-debug -- cardano-debug-mcp
+# with a Koios key
+codex mcp add cardano-debug --env KOIOS_API_KEY=... -- cardano-debug-mcp
+codex mcp list
+```
+
+Or in `~/.codex/config.toml` (a project can keep its own `.codex/config.toml`, which Codex reads
+for projects you have marked as trusted):
+
+```toml
+[mcp_servers.cardano-debug]
+command = "cardano-debug-mcp"
+startup_timeout_sec = 30
+tool_timeout_sec = 180
+env = { KOIOS_API_KEY = "..." }
+```
+
+Codex stops a tool call after 60 s by default; a long validation, decompilation or `debug_run` can
+take longer, so raise `tool_timeout_sec`.
+
+**Cursor**: `~/.cursor/mcp.json` (all projects) or `.cursor/mcp.json` (one project):
+
+```json
+{ "mcpServers": { "cardano-debug": { "command": "cardano-debug-mcp" } } }
+```
+
+**VS Code** (GitHub Copilot, agent mode): `.vscode/mcp.json` in the workspace. The top-level key is
+`servers`, not `mcpServers`:
+
+```json
+{ "servers": { "cardano-debug": { "type": "stdio", "command": "cardano-debug-mcp" } } }
+```
+
+**Gemini CLI**: `~/.gemini/settings.json` (or `.gemini/settings.json` in a project):
+
+```json
+{ "mcpServers": { "cardano-debug": { "command": "cardano-debug-mcp" } } }
+```
+
+**Claude Desktop**: `claude_desktop_config.json`
+(`~/Library/Application Support/Claude/` on macOS, `%APPDATA%\Claude\` on Windows), then restart the app:
+
+```json
+{ "mcpServers": { "cardano-debug": { "command": "cardano-debug-mcp" } } }
+```
+
+Notes for all of them:
+
+- Apps started from a launcher or the Dock often do not see your shell `PATH` (an `nvm` install, for
+  example). If the client cannot find `cardano-debug-mcp`, put the absolute path from
+  `which cardano-debug-mcp` in `command`, or use `node` with the absolute path of `dist/server.js`.
+- Windows is only supported through WSL2, as above: run the client and the server in the same place.
+- The prompts (`/cardano-debug:debug_tx` and so on) are how Claude Code lists MCP prompts; other
+  clients show them in their own way or not at all. The tools do not depend on them. Clients also
+  differ in how much of the server's built-in instructions they hand to the model: the tool
+  descriptions and the `docs` tool carry the same routing.
+- Check the connection in the client (`codex mcp list`, the MCP settings of Cursor or VS Code), or run
+  `cardano-debug-mcp --check` in a terminal.
 
 ## Tools
 
@@ -334,7 +405,8 @@ rm -rf ~/.cache/cardano-debug-mcp            # the chain data cache (or your CAR
 npm uninstall -g @cardananium/cardano-debug-mcp   # if you installed it from npm
 ```
 
-For a source install, delete the cloned repository.
+Other clients: delete the `cardano-debug` entry from the file you added it to (`codex mcp remove
+cardano-debug` in Codex). For a source install, delete the cloned repository.
 
 ## How it works
 
