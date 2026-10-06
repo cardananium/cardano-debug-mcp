@@ -16,7 +16,7 @@ export const TOOL_TEXT = {
   docs: {
     title: "Built-in Cardano / Plutus / debugger docs",
     description:
-      "Built-in reference docs, checked against this server's ledger CDDL, validator and CEK engine: call BEFORE guessing. docs() = topics; docs(topic) = sections + gists; docs(topic, section) = one section; docs(error=<Name>) = an error / warning; docs(query=…) = search. Topics: debug-playbook, validation-errors, tx-anatomy, script-context, uplc-cek, cbor-cddl, tools.",
+      "Built-in reference docs, checked against this server's ledger CDDL, validator and CEK engine: call BEFORE guessing. docs() = topics; docs(topic) = sections + gists; docs(topic, section) = one section; docs(error=<Name>) = an error / warning; docs(query=…) = search. Topics: debug-playbook, validation-errors, tx-anatomy, script-context, uplc-cek, cbor-cddl, cips, tools.",
     params: {
       topic: "Topic: answers its summary and section list.",
       section: "Section id, number or heading (prefix / substring; 'topic/section' works); without topic all topics are searched.",

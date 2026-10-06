@@ -11,7 +11,7 @@ import path from "node:path";
 
 import { textAssetDir } from "../wasm-assets.js";
 
-export const DOC_TOPICS = ["tx-anatomy", "script-context", "uplc-cek", "validation-errors", "debug-playbook", "cbor-cddl", "tools"] as const;
+export const DOC_TOPICS = ["tx-anatomy", "script-context", "uplc-cek", "validation-errors", "debug-playbook", "cbor-cddl", "cips", "tools"] as const;
 export type DocTopic = (typeof DOC_TOPICS)[number];
 
 export function isDocTopic(value: unknown): value is DocTopic {

@@ -21,3 +21,5 @@ Use it as a hint, not as a verdict:
 - the registry is mostly mainnet and not exhaustive: no match proves nothing; a match names a protocol and version, but the decompiled script is what the chain runs;
 - name the file you relied on; without web access say the identification is unverified;
 - the cquisitor transaction view (`ui_link`, app='cquisitor', tx_id) already labels such inputs and outputs and shows their decoded datums: offer it to a user who wants to see the order (section='show-it-in-a-ui').
+
+Data a CIP defines (token datums, metadata labels, ids, anchors) is in docs(topic='cips').

@@ -101,7 +101,7 @@ describe.each(serverVariants({ env: { CARDANO_DEBUG_CACHE_DIR: CACHE_DIR } }))("
   });
 
   it("docs: index, a topic index, a section, an error entry, a query and the resources", async () => {
-    const TOPICS = ["tx-anatomy", "script-context", "uplc-cek", "validation-errors", "debug-playbook", "cbor-cddl", "tools"];
+    const TOPICS = ["tx-anatomy", "script-context", "uplc-cek", "validation-errors", "debug-playbook", "cbor-cddl", "cips", "tools"];
     const { tools } = await client.listTools();
     const docs = tools.find((t) => t.name === "docs")!;
     expect(docs.description).toMatch(/validation-errors/);
