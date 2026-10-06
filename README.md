@@ -201,9 +201,10 @@ Only as a last resort, when the docs and tools leave a deciding question open (f
 chain disagrees with the validator), it is told to read the
 [cardano-ledger](https://github.com/IntersectMBO/cardano-ledger) source.
 
-When you do not follow an explanation, or a position is hard to describe in words (a byte offset,
-a field of a big transaction, a UPLC term, a branch of a script), the assistant builds a link into
-cquisitor or de-uplc-web with the spot highlighted and annotated, instead of only describing it.
+After explaining why a transaction, script or bytes fail, the assistant offers to show the spot in
+cquisitor or de-uplc-web (a byte offset, a field of a big transaction, a UPLC term, a branch of a
+script), and builds and opens the link when you agree, or at once when you ask to see it. Governance
+action ids are shown as CIP-129 `gov_action1…` with a Cardanoscan link.
 
 ### Prompts
 

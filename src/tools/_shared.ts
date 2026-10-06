@@ -57,17 +57,17 @@ export interface OkOptions {
 
 /**
  * A ready ui_link call that shows the user a failure on the spot. The user usually does not know that cquisitor / de-uplc-web can be
- * opened with the decisive spot highlighted, so the failing answers carry the call (`show_it`); `open=true` opens it for a user who
- * is at the keyboard (an answer for someone else gets the URL instead: docs debug-playbook/show-it-in-a-ui).
+ * opened with the decisive spot highlighted, so the failing answers carry the call (`show_it`) for the model to offer after its
+ * explanation; `open=true` opens it once the user agrees (an answer for someone else gets the URL instead: docs debug-playbook/show-it-in-a-ui).
  */
 export function showIt(kind: "tx" | "debug" | "cbor", ref?: string): string {
   switch (kind) {
     case "tx":
-      return `Show the user where it breaks, unasked: ui_link(app='cquisitor', tx_id='${ref}', from=['validation'], open=true). For a failing script, find the cause with debug_run(until='error', stop_before=true) and then open ui_link(app='de_uplc', dbg_id=…, from=['session'], open=true).`;
+      return `After you explain it, offer to show where it breaks; on yes: ui_link(app='cquisitor', tx_id='${ref}', from=['validation'], open=true). For a failing script, find the cause with debug_run(until='error', stop_before=true) and then offer ui_link(app='de_uplc', dbg_id=…, from=['session'], open=true).`;
     case "debug":
-      return `Open the failing term for the user, unasked: ui_link(app='de_uplc', dbg_id='${ref}', from=['session'], open=true); say what opened.`;
+      return `After you explain it, offer to open the failing term; on yes: ui_link(app='de_uplc', dbg_id='${ref}', from=['session'], open=true). Say only where to look.`;
     case "cbor":
-      return "Show the user the byte, unasked: ui_link(app='cquisitor', cbor=<the same bytes>, cddl / preset and rule as here, from=['cbor_errors'], open=true); say what opened.";
+      return "After you explain it, offer to show the byte; on yes: ui_link(app='cquisitor', cbor=<the same bytes>, cddl / preset and rule as here, from=['cbor_errors'], open=true). Say only where to look.";
   }
 }
 
