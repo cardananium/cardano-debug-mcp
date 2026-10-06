@@ -187,7 +187,7 @@ describe("generated annotations", () => {
       { kind: "diagnostic", index: 2 },
       { kind: "tx_path", path: "transaction.body.outputs.0" },
     ]);
-    expect(annotations[0]).toMatchObject({ label: "FeeTooSmallUTxO", hint: "fee too small\nraise the fee", severity: "error" });
+    expect(annotations[0]).toEqual({ target: { kind: "diagnostic", index: 0 }, label: "FeeTooSmallUTxO", severity: "error" });
     expect(annotations[4]!.severity).toBe("warning");
   });
 

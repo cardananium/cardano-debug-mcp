@@ -11,6 +11,7 @@ import { bigintFromWire } from "../vocab/json.js";
 import { formatRedeemerRef, refFromLibTag } from "../vocab/redeemerRef.js";
 import { WorkerTimeoutError } from "../workers/rpc.js";
 import { stringifyForLib } from "./contextCodec.js";
+import { readableActionIds, readableActionIdValues } from "./govId.js";
 import { isIncludedBytes } from "./onChain.js";
 import { capturedAtIso, chainStateOf, type ChainState } from "./state.js";
 
@@ -188,10 +189,10 @@ function summarizeDiagnostic(raw: unknown, kind: "error" | "warning", record: Tx
   const variant = r[kind];
   const message = typeof r[`${kind}_message`] === "string" ? (r[`${kind}_message`] as string) : variantName(variant);
   const locations = Array.isArray(r.locations) ? r.locations.filter((l): l is string => typeof l === "string") : [];
-  const out: DiagnosticSummary = { name: variantName(variant), message: capString(message, MESSAGE_CHARS), locations: locations.slice(0, 8) };
+  const out: DiagnosticSummary = { name: variantName(variant), message: capString(readableActionIds(message, record.network), MESSAGE_CHARS), locations: locations.slice(0, 8) };
   if (typeof r.hint === "string" && r.hint) out.hint = capString(r.hint, MESSAGE_CHARS);
   const data = variantData(variant);
-  if (data !== undefined) out.data = pruneDepth(integersAsStrings(data), 3, MESSAGE_CHARS);
+  if (data !== undefined) out.data = pruneDepth(integersAsStrings(readableActionIdValues(data, record.network)), 4, MESSAGE_CHARS);
   const ref = redeemerRefFromLocations(locations, record) ?? redeemerRefFromData(data, record);
   if (ref) out.redeemer = ref;
   return out;

@@ -10,6 +10,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { loadConfig } from "../../src/config.js";
 import type { AppContext } from "../../src/context.js";
 import { createLibClient, type LibClient } from "../../src/lib.js";
+import { govActionIdBech32, govActionUrl } from "../../src/chain/govId.js";
 import { providersOf } from "../../src/providers.js";
 import { readResourceUri } from "../../src/resources.js";
 import { SessionRegistry } from "../../src/store/sessionRegistry.js";
@@ -156,6 +157,15 @@ describe.skipIf(!existsSync(LIB_WORKER))("tx_inspect enrichment + resources", ()
     const summary = (body.structuredContent.rows as Array<Record<string, unknown>>)[0]!;
     expect(summary.chain_context).toBe("resolved");
     expect((summary.counts as Record<string, number>).reference_scripts).toBe(1);
+  });
+
+  it("governance rows: each vote carries its action's CIP-129 id with the explorer link", async () => {
+    const vote = await buildTxRecord(lib, { tx: fixture("vote-tx.tx"), network: "preview" }); // s12: one DRep vote
+    ctx.txStore.put(vote);
+    const result = await txInspect(ctx, { tx_id: vote.txId, section: "governance" });
+    const rows = result.structuredContent.rows as Array<Record<string, any>>;
+    const id = govActionIdBech32(fxStr("s12.govActionTxId"), fxInt("s12.govActionIndex"))!;
+    expect(rows[0]!.value.votes[0].gov_action).toBe(`[${id}](${govActionUrl(id, "preview")})`);
   });
 
   it("row pages stay under the character budget (page_cut + next_offset) on a 26-output tx at depth 6 / limit 100", async () => {

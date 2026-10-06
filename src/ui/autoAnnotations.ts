@@ -10,6 +10,7 @@ import type { EnginePosition } from "../engine/protocol.js";
 import type { SessionRecord, SessionRegistry } from "../store/sessionRegistry.js";
 import type { TxRecord } from "../store/txStore.js";
 import { clip } from "./annotations.js";
+import { resolveLocation } from "./txPaths.js";
 
 /** Hint length of generated annotations. */
 export const AUTO_HINT_CHARS = 400;
@@ -43,24 +44,27 @@ export function indexedDiagnostics(record: TxRecord): IndexedDiagnostic[] {
   return out;
 }
 
-function diagnosticHint(d: DiagnosticSummary): string {
-  return clip(d.hint ? `${d.message}\n${d.hint}` : d.message, AUTO_HINT_CHARS);
-}
-
-/** One `diagnostic` target per entry plus a `tx_path` for its first location. */
-export function diagnosticAnnotations(diagnostics: readonly IndexedDiagnostic[]): CqAnnotation[] {
+/**
+ * One `diagnostic` target per entry plus a `tx_path` for its first location, written the way the decoded transaction
+ * (`decoded`) spells it; a location that is not in it is reduced to the closest enclosing place that is. They only
+ * point (the name, no hint): the app shows each diagnostic's message and hint itself.
+ */
+export function diagnosticAnnotations(diagnostics: readonly IndexedDiagnostic[], decoded?: unknown): CqAnnotation[] {
   const out: CqAnnotation[] = [];
   for (const d of diagnostics) {
-    const base = { label: clip(d.name, 80), hint: diagnosticHint(d), severity: d.severity } as const;
+    const base = { label: clip(d.name, 80), severity: d.severity } as const;
     out.push({ target: { kind: "diagnostic", index: d.index }, ...base });
-    for (const path of d.locations.slice(0, LOCATIONS_PER_DIAGNOSTIC)) out.push({ target: { kind: "tx_path", path }, ...base });
+    for (const location of d.locations.slice(0, LOCATIONS_PER_DIAGNOSTIC)) {
+      const path = resolveLocation(decoded, location);
+      if (path) out.push({ target: { kind: "tx_path", path }, ...base });
+    }
   }
   return out;
 }
 
 /** from='validation': every error / warning of the stored validation (none before tx_validate). */
 export function validationAnnotations(record: TxRecord): { annotations: CqAnnotation[]; total: number } {
-  const all = diagnosticAnnotations(indexedDiagnostics(record));
+  const all = diagnosticAnnotations(indexedDiagnostics(record), record.decoded);
   return { annotations: all.slice(0, AUTO_MAX), total: all.length };
 }
 
@@ -71,7 +75,7 @@ export function redeemerAnnotations(record: TxRecord, ref: string, ev: { tag: st
   const headline = errorHeadline(ev.error ?? undefined) ?? own[0]?.message;
   const row: CqAnnotation = { target: { kind: "redeemer", tag: ev.tag, index: ev.index }, label: `${ref} failed`, severity: "error" };
   if (headline) row.hint = clip(headline, AUTO_HINT_CHARS);
-  return [row, ...diagnosticAnnotations(own)].slice(0, AUTO_MAX);
+  return [row, ...diagnosticAnnotations(own, record.decoded)].slice(0, AUTO_MAX);
 }
 
 /** The term a position stands on (the last executed term between terms), or null. */

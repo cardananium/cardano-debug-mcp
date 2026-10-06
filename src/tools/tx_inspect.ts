@@ -9,6 +9,8 @@
 import type { McpServer } from "@modelcontextprotocol/server";
 import * as z from "zod/v4";
 
+import { govActionIdBech32, govActionLabel } from "../chain/govId.js";
+import type { Network } from "../config.js";
 import type { AppContext, ToolModule } from "../context.js";
 import { providersOf } from "../providers.js";
 import type { PlutusVersionOrNative, RedeemerTarget, TxRecord } from "../store/txStore.js";
@@ -434,6 +436,18 @@ function certRows(view: TxView, depth: number): Json[] {
   });
 }
 
+/** A decoded vote entry with the CIP-129 id (and its explorer link) beside each `action_id`. */
+function withActionLabels(entry: unknown, network: Network): unknown {
+  const voter = rec(entry);
+  if (!Array.isArray(voter.votes)) return entry;
+  const votes = voter.votes.map((vote) => {
+    const actionId = rec(rec(vote).action_id);
+    const id = typeof actionId.transaction_id === "string" && typeof actionId.index === "number" ? govActionIdBech32(actionId.transaction_id, actionId.index) : undefined;
+    return id ? { ...rec(vote), gov_action: govActionLabel(id, network) } : vote;
+  });
+  return { ...voter, votes };
+}
+
 function governanceRows(view: TxView, depth: number): Json[] {
   const body = view.record.decoded.transaction.body;
   const rows: Json[] = [];
@@ -442,11 +456,14 @@ function governanceRows(view: TxView, depth: number): Json[] {
   const proposalRedeemers = redeemerBy("propose");
   const votes = body.voting_procedures;
   const voteEntries: unknown[] = Array.isArray(votes) ? votes : Object.entries(rec(votes));
+  const { network, txHash } = view.record;
   voteEntries.forEach((entry, index) => {
-    rows.push({ index, kind: "vote", redeemer: voteRedeemers.get(index)?.ref, value: pruneDepth(entry, depth) });
+    rows.push({ index, kind: "vote", redeemer: voteRedeemers.get(index)?.ref, value: pruneDepth(withActionLabels(entry, network), depth) });
   });
   arr(body.voting_proposals).forEach((entry, index) => {
-    rows.push({ index, kind: "proposal", redeemer: proposalRedeemers.get(index)?.ref, value: pruneDepth(entry, depth) });
+    // the id the action has once this transaction is on chain
+    const id = govActionIdBech32(txHash, index);
+    rows.push({ index, kind: "proposal", redeemer: proposalRedeemers.get(index)?.ref, gov_action: id && govActionLabel(id, network), value: pruneDepth(entry, depth) });
   });
   if (body.current_treasury_value !== undefined || body.donation !== undefined) {
     rows.push({ kind: "treasury", current_treasury_value: str(body.current_treasury_value) ?? null, donation: str(body.donation) ?? null });

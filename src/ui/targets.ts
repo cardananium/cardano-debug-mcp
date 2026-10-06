@@ -15,6 +15,7 @@ import { childKeys, lookupPath, parsePath } from "../tools/_shared.js";
 import { libTagFromPurpose, parsePurpose } from "../vocab/purpose.js";
 import type { AnyTarget, TargetResolver } from "./annotations.js";
 import { indexedDiagnostics } from "./autoAnnotations.js";
+import { jsonPathOf } from "./txPaths.js";
 
 /** Entries of an `available` hint. */
 const AVAILABLE_MAX = 12;
@@ -60,8 +61,10 @@ export function txTargetResolver(record: TxRecord, notes: string[]): TargetResol
         if (path.startsWith("/")) return { drop: `tx_path is a dotted path (transaction.body.fee), not a JSON pointer: ${path}` };
         const segments = parsePath(path);
         if (segments[0] !== "transaction") return { drop: `tx_path starts at "transaction" (transaction.body.fee), not at ${JSON.stringify(segments[0] ?? path)}`, available: ["transaction.body", "transaction.witness_set", "transaction.auxiliary_data"] };
-        const lookup = lookupPath(record.decoded, segments);
-        if (lookup.found) return undefined;
+        // A validator location (`transaction.body.voting_procedures.0.0`) is accepted and written the way the decoded transaction spells it.
+        const spelled = jsonPathOf(path);
+        const lookup = lookupPath(record.decoded, spelled === path ? segments : parsePath(spelled));
+        if (lookup.found) return spelled === path ? undefined : { target: { kind: "tx_path", path: spelled } };
         const at = lookup.resolved.length > 0 ? lookup.resolved.join(".") : "the root";
         return { drop: `tx_path ${path} is not in the decoded transaction (resolved up to ${at})`, available: childPaths(lookup.resolved, lookupPath(record.decoded, lookup.resolved).value) };
       }

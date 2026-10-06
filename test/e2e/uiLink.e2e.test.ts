@@ -104,7 +104,7 @@ describe("ui_link over stdio (offline bundle)", () => {
     diagnostics.forEach((a, i) => {
       expect(a.target).toEqual({ kind: "diagnostic", index: i });
       expect(a.label).toBe(ordered[i]!.name);
-      expect(a.hint!.startsWith(String(ordered[i]!.message).slice(0, 60))).toBe(true);
+      expect(a.hint).toBeUndefined(); // the app shows each diagnostic's message and hint itself
     });
     const paths = generated.filter((a) => a.target.kind === "tx_path").map((a) => (a.target as { path: string }).path);
     expect(paths).toEqual(ordered.map((o) => (o.locations as string[])[0]).filter((p): p is string => typeof p === "string"));

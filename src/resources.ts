@@ -37,6 +37,7 @@ import { parseJsonBigintSafe, toWireJson } from "./vocab/json.js";
 import { isWitnessIndexRef, tryParseRedeemerRef } from "./vocab/redeemerRef.js";
 import { packageVersion } from "./wasm-assets.js";
 import { lookupTxRecord } from "./tx/record.js";
+import { readableActionIdValues } from "./chain/govId.js";
 import { SEMANTICS } from "./chain/validate.js";
 import { compactIndentation, INDENT_CAP, LISTING_DEFAULT_LINES } from "./engine/indent.js";
 import { LINK_ID_PATTERN } from "./ui/linkStore.js";
@@ -167,7 +168,7 @@ export function validationView(record: TxRecord): unknown | undefined {
     validated_at: new Date(validation.at).toISOString(),
     elapsed_ms: validation.elapsedMs,
     phases: validation.phases,
-    ...validation.result,
+    ...(readableActionIdValues(validation.result, record.network) as object),
     eval_redeemer_results: redeemers,
     resources: {
       traces: `cardano-debug://tx/${record.txId}/redeemer/<ref>/traces.txt`,
