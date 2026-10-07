@@ -31,6 +31,7 @@ import { checkAnnotations, type AnyAnnotation, type TargetResolver, type UiApp }
 import { AUTO_MAX, cborErrorAnnotations, errorTermOfSession, failingTermAnnotation, failureOfRedeemer, noFailingTermNote, positionTerm, profileAnnotations, profileOfRedeemer, profileOfSession, termAnnotation, validationAnnotations, type FailingTerm } from "../ui/autoAnnotations.js";
 import { linkResourceUri, uiLinkStore, writeLinkFile } from "../ui/linkStore.js";
 import { openUrl } from "../ui/opener.js";
+import { jsonPathOf } from "../ui/txPaths.js";
 import { cborTargetResolver, loadTree, ownKinds, programTargetResolver, pseudocodeTargetResolver, txTargetResolver, type ProgramShape } from "../ui/targets.js";
 import { dehoskPurposeFromPurpose } from "../vocab/purpose.js";
 import { WorkerTimeoutError } from "../workers/rpc.js";
@@ -162,6 +163,7 @@ async function cquisitorLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromSo
       const auto = validationAnnotations(record);
       generated.push(...auto.annotations);
       if (auto.total === 0) notes.push("from='validation': the validation reports no errors or warnings");
+      else if ((args.annotations ?? []).length === 0) notes.push("from='validation' marks places by the error's name only, with no text: write annotations (label + hint: what is here, why, the fix) to tell the story; yours replace the generated ones at the same place");
       if (auto.total > auto.annotations.length) notes.push(`from='validation': ${auto.total} targets, the first ${auto.annotations.length} kept`);
     } else {
       record = await lookupTxRecord(ctx, args.tx_id);
@@ -506,6 +508,14 @@ async function decompilerLink(ctx: AppContext, args: UiLinkArgs, from: Set<FromS
 
 // ---------- the tool ----------
 
+/** Identity of a target for the "same place" test; a tx_path counts in the decoded transaction's spelling. */
+function targetKey(target: unknown): string {
+  if (target === null || typeof target !== "object") return "";
+  const t = target as Record<string, unknown>;
+  if (t.kind === "tx_path" && typeof t.path === "string") return `tx_path:${jsonPathOf(t.path.trim())}`;
+  return JSON.stringify(Object.entries(t).sort(([a], [b]) => a.localeCompare(b)));
+}
+
 export async function uiLink(ctx: AppContext, args: UiLinkArgs, extra?: unknown): Promise<ToolResult> {
   const app = args.app as UiApp;
   const from = new Set<FromSource>(args.from ?? []);
@@ -513,8 +523,12 @@ export async function uiLink(ctx: AppContext, args: UiLinkArgs, extra?: unknown)
     const built = app === "cquisitor" ? await cquisitorLink(ctx, args, from, extra) : app === "de_uplc" ? await deUplcLink(ctx, args, from, extra) : await decompilerLink(ctx, args, from, extra);
     if (isResult(built)) return built;
     const own = args.annotations ?? [];
-    const generated = built.generated.slice(0, AUTO_MAX);
-    if (built.generated.length > generated.length) built.notes.push(`${built.generated.length} annotations generated, the first ${generated.length} kept`);
+    // a generated pointer where the caller wrote a card of its own would only repeat it without the text
+    const ownKeys = new Set(own.map((entry) => targetKey((entry as { target?: unknown } | null)?.target)));
+    const fresh = built.generated.filter((g) => !ownKeys.has(targetKey(g.target)));
+    if (fresh.length < built.generated.length) built.notes.push(`${built.generated.length - fresh.length} generated annotation(s) at the same place as yours left out: yours explain them`);
+    const generated = fresh.slice(0, AUTO_MAX);
+    if (fresh.length > generated.length) built.notes.push(`${fresh.length} annotations generated, the first ${generated.length} kept`);
     // only the caller's entries are resolved: the generated ones come from the server's own answers
     const resolver = own.length > 0 && built.resolver ? await built.resolver(ownKinds(own)) : undefined;
     const resolve: TargetResolver | undefined = resolver ? (target, index) => (index < own.length ? resolver(target, index) : undefined) : undefined;

@@ -335,6 +335,20 @@ describe("ui_link CBOR / CDDL tabs and sessions", () => {
       expect(ann[1]!.severity).toBe("info");
     });
 
+    it("a card the caller wrote replaces the generated pointer at the same place, and says so", async () => {
+      const dbg = open({}, report("ready", 1, null));
+      ctx.sessions.get(dbg)!.extra.profileHot = {
+        outcome: "done",
+        over_budget: false,
+        terms: [{ term_id: 2, kind: "Apply", uplc_line: 4, hits: "6", self_cpu: "9", total_cpu: "10", pct: 5 }, { term_id: 3, kind: "Apply", uplc_line: 5, hits: "1", self_cpu: "1", total_cpu: "2", pct: 1 }],
+      };
+      const body = await call({ app: "de_uplc", dbg_id: dbg, from: ["profile"], annotations: [{ target: { kind: "term", term_id: 2 }, label: "the comparison", hint: "why it costs" }] });
+      expect(body).toMatchObject({ annotations_count: 2, dropped: [] });
+      expect(body.notes.join("\n")).toMatch(/1 generated annotation\(s\) at the same place as yours left out/);
+      const ann = deUplcPayload(await fullUrl(body)).ann as Json[];
+      expect(ann.map((a) => [a.target.term_id, a.label])).toEqual([[2, "the comparison"], [3, "hot #2: 1% of cpu"]]);
+    });
+
     it("from='profile' before any profile says what to run; a partial run says so; a bare script explains", async () => {
       const dbg = open({}, report("ready", 1, null));
       const none = await call({ app: "de_uplc", dbg_id: dbg, from: ["profile"] });

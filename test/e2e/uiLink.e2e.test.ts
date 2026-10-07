@@ -107,7 +107,9 @@ describe("ui_link over stdio (offline bundle)", () => {
       expect(a.hint).toBeUndefined(); // the app shows each diagnostic's message and hint itself
     });
     const paths = generated.filter((a) => a.target.kind === "tx_path").map((a) => (a.target as { path: string }).path);
-    expect(paths).toEqual(ordered.map((o) => (o.locations as string[])[0]).filter((p): p is string => typeof p === "string"));
+    // the caller's own card on transaction.body.fee replaces the generated pointer at that place
+    expect(paths).toEqual(ordered.map((o) => (o.locations as string[])[0]).filter((p): p is string => typeof p === "string" && p !== "transaction.body.fee"));
+    expect(body.notes.join("\n")).toMatch(/generated annotation\(s\) at the same place as yours left out/);
     expect(generated.find((a) => a.label === "MachineError")!.severity).toBe("error");
   });
 
@@ -160,7 +162,10 @@ describe("ui_link over stdio (offline bundle)", () => {
     expect(profile.builtin_groups.length).toBeGreaterThan(0);
     expect(profile.builtin_groups.reduce((sum: number, g: Json) => sum + g.cpu_pct, 0)).toBeCloseTo(100, 0);
     expect(profile.builtins_total.cpu_pct_of_spent).toBeGreaterThan(0);
-    expect(profile.show_it).toContain(`dbg_id='${opened.dbg_id}', from=['profile']`);
+    // the ready call: a card on each hot term, its text left for the model to write
+    expect(profile.show_it).toContain(`dbg_id='${opened.dbg_id}'`);
+    expect(profile.show_it).toContain('"target":{"kind":"term","term_id":');
+    expect(profile.show_it).toContain("WRITE the cards");
     // the script fails: the validator drops the machine steps it had not charged yet, so the totals differ and the answer says why
     expect(profile).toMatchObject({ outcome: "error", parity: { match: false, note: expect.stringMatching(/failing run/) } });
     const hot = (profile.hot_terms as Json[]).map((t, i) => ({ rank: i + 1, term_id: t.term_id as number | null, pct: t.pct as number })).filter((t) => t.term_id !== null);

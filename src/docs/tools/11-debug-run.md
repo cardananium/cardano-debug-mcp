@@ -9,4 +9,4 @@ gist: what each debug_run stop condition means, stop_before and hit, the error p
 - A call the engine refuses (bad term_id, cpu, builtin, hit) changes nothing: `restart` and new breakpoints apply only to an accepted call. The engine's own budget cap (about 1e13 cpu) ends a run as an error that names the cap.
 - A run longer than one 2 s chunk keeps the traces of every chunk (`traces.new` up to 10, `new_total` all). `frames_total` is `"unknown"` after a cut run (`limit`, `cancelled`) on a possibly deep stack: debug_inspect(what='frames') reads it.
 - The report's UPLC window marks `>` the current line and `*` breakpoints (term-id ones too); pseudocode lines are never positions. `timeout_ms` defaults to the server run timeout (60 s).
-- `show_it` (stopped on an error): the ready `ui_link` call that opens the failing term. Explain first, offer it in one line, make the call on a yes.
+- `show_it` (stopped on an error): the ready `ui_link` call with a card on the failing term; you write its label and hint. Explain first, offer it in one line, make the call on a yes.

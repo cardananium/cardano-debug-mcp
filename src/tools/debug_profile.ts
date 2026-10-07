@@ -8,7 +8,8 @@ import * as z from "zod/v4";
 import type { AppContext, ToolModule } from "../context.js";
 import type { ProfileOptions } from "../engine/protocol.js";
 import { leaseSessionWait, MAX_MAX_STEPS, MAX_RUN_TIMEOUT_MS, sessionErrorResult, sessionLinks } from "./_debug.js";
-import { clampInt, ok, showIt, type ToolResult } from "./_shared.js";
+import { clampInt, ok, type ToolResult } from "./_shared.js";
+import { showItProfile } from "../ui/showIt.js";
 import { TOOL_TEXT } from "./descriptions.js";
 
 const T = TOOL_TEXT.debug_profile;
@@ -71,7 +72,7 @@ export async function debugProfile(ctx: AppContext, args: Args, signal: AbortSig
       attribution: "apply_site (a Return step is charged to the apply site it returns into)",
       elapsed_ms: report.elapsed_ms,
       full_report_chars: report.report_chars,
-      show_it: showIt("profile", record.dbgId),
+      show_it: showItProfile(record.dbgId, report.hot_terms.map((t) => t.term_id)),
       note: "The profile ran on a separate machine: the session's own position, traces and step counters are unchanged.",
     };
     if (report.error) body.error = report.error;

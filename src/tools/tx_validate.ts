@@ -10,7 +10,8 @@ import type { AppContext, ToolModule } from "../context.js";
 import type { TxRecord } from "../store/txStore.js";
 import { resolveTxInput } from "../tx/record.js";
 import { chain, chainResources, progress, signalOf } from "./_chain.js";
-import { failFromError, ok, showIt, ToolInputError, type ResourceLink, type ToolResult } from "./_shared.js";
+import { failFromError, ok, ToolInputError, type ResourceLink, type ToolResult } from "./_shared.js";
+import { showItTx } from "../ui/showIt.js";
 import { providerFailure } from "./tx_load.js";
 import { WorkerTimeoutError } from "../workers/rpc.js";
 import { TOOL_TEXT } from "./descriptions.js";
@@ -52,7 +53,7 @@ export async function txValidate(ctx: AppContext, args: Args, extra?: unknown): 
     const body = () => {
       const summary = validationSummary(record, { phases, defaults });
       const failed = summary.verdict === "phase1_failed" || summary.verdict === "phase2_failed" || summary.verdict === "both_failed";
-      return { ...common, ...summary, phases, ...(failed ? { show_it: showIt("tx", record.txId) } : {}), ...(resolution.defaults_applied.length ? { load_defaults: resolution.defaults_applied } : {}) };
+      return { ...common, ...summary, phases, ...(failed ? { show_it: showItTx(record) } : {}), ...(resolution.defaults_applied.length ? { load_defaults: resolution.defaults_applied } : {}) };
     };
 
     let state = chainStateOf(record);
